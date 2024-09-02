@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-08-31T17:09:31.473Z</updated>
+  <updated>2024-09-02T17:25:03.313Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo 博客中如何插入多种内容</title>
+    <link href="http://example.com/2024/09/02/leecode150-%E8%90%B1%E4%BB%94%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0%E8%AE%B0%E5%BD%951-%E6%95%B0%E7%BB%84/"/>
+    <id>http://example.com/2024/09/02/leecode150-%E8%90%B1%E4%BB%94%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0%E8%AE%B0%E5%BD%951-%E6%95%B0%E7%BB%84/</id>
+    <published>2024-09-02T06:00:00.000Z</published>
+    <updated>2024-09-02T17:25:03.313Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在这篇文章中，我将演示如何在 Hexo 博客中插入各种内容，包括图片、表格、代码块，以及使用不同级别的标题来组织文章结构。</p><span id="more"></span><h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>在 Hexo 博客中插入图片非常简单。你可以使用本地图片或网络图片。下面是一个本地图片的示例：</p><p><img src="/images/hexo-logo.jpg" alt="Hexo Logo"></p><h2 id="插入表格"><a href="#插入表格" class="headerlink" title="插入表格"></a>插入表格</h2><p>Markdown 还支持创建简单的表格。下面是一个插入表格的示例，表格可以用来展示数据或进行比较。</p><table><thead><tr><th>功能</th><th>描述</th><th>支持情况</th></tr></thead><tbody><tr><td>插入图片</td><td>可以插入本地或网络图片</td><td>支持</td></tr><tr><td>插入表格</td><td>可以用 Markdown 创建简单表格</td><td>支持</td></tr><tr><td>插入代码块</td><td>支持多种编程语言的语法高亮</td><td>支持</td></tr></tbody></table><h2 id="插入代码块"><a href="#插入代码块" class="headerlink" title="插入代码块"></a>插入代码块</h2><p>Hexo 支持使用 Markdown 插入代码块，并且可以对多种编程语言进行语法高亮。下面是一个插入 Python 代码块的示例：</p><h3 id="示例代码块（Python）"><a href="#示例代码块（Python）" class="headerlink" title="示例代码块（Python）"></a>示例代码块（Python）</h3><pre><code class="python">def hello_world():    print(&quot;Hello, World!&quot;)hello_world()</code></pre>]]></content>
+    
+    
+    <summary type="html">这篇文章展示了如何在 Hexo 博客中插入图片、表格、代码块、正文内容以及三级标题。</summary>
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Hexo" scheme="http://example.com/tags/Hexo/"/>
+    
+    <category term="教程" scheme="http://example.com/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
