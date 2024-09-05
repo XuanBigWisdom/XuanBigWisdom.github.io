@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>萱仔求职系列——1.1_机器学习基础知识复习.html | 萱仔的学习小屋</title>
+  <meta name="description" content="进行一些求职面经和笔试的学习，进行自我提升">
+<meta property="og:type" content="article">
+<meta property="og:title" content="萱仔求职系列——1.1_机器学习基础知识复习.html">
+<meta property="og:url" content="http://example.com/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="萱仔的学习小屋">
+<meta property="og:description" content="进行一些求职面经和笔试的学习，进行自我提升">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/ca5f68c9959741bb81ce74df09ee1858.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/05d031e3038844159499c95f6b799250.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/3c72a78f60eb4946a448e70b6a16d511.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/8b4d6a2d99ce4b9dab14b52c1aadccf9.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/32139e9205a84c74bacd95b5260494cb.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/21b664ce932541fba6dcd6c1791b4906.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/4fc64aba9cf04221ad03c76b0e2926a8.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/fee6b42740a041ada7942ff755008823.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/2cd948ee295441a1b8e06327272118ee.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/7d1cc9185fce421aab963f1b1b307244.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/9e126888c83f4ed79d9a7c4f462bf2d0.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/5a7cf65b67544d6084955a1c85f83437.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/2c8be37d399642c2886a185219de464e.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/3a8cc06f987f487fb68645047bcae1a0.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/d6d8cb03322f446d87d424fdf9db53b9.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/94cfd02d7b5e4d2782f04b1adbdad9bd.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/4820f54d7ab840c8bb2bb3c51aed43a9.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/55ca85165cf645f89d6a6f523e233e3c.png">
+<meta property="article:published_time" content="2024-09-05T06:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-05T17:02:32.991Z">
+<meta property="article:author" content="xuanzaismart">
+<meta property="article:tag" content="技术, 教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/ca5f68c9959741bb81ce74df09ee1858.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/index.html">
+  
+    <link rel="alternate" href="[object Object]" title="萱仔的学习小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://blog.csdn.net/qq_44117805?" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">萱仔</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">萱仔的自我学习记录，冲冲冲！</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hebei, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>不问收获，但问耕耘！冲冲冲，萱仔的自我学习记录博客，恭喜自己重新在github搭建个人博客，前面内容逐渐搬运到新博客之后和原CSDN博客同时更新，<br>CSDN网址：<a href="https://blog.csdn.net/qq_44117805?type=blog" target="_blank">https://blog.csdn.net/qq_44117805?type=blog</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">大模型学习记录</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/Python/">Python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-%E6%95%99%E7%A8%8B/" rel="tag">Hexo, 教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" rel="tag">常用库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-nlp/" rel="tag">技术, nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Anaconda/" style="font-size: 13px;">Anaconda</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/Hexo-%E6%95%99%E7%A8%8B/" style="font-size: 13.5px;">Hexo, 教程</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" style="font-size: 13px;">常用库</a> <a href="/tags/%E6%8A%80%E6%9C%AF-nlp/" style="font-size: 13px;">技术, nlp</a> <a href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" style="font-size: 14px;">技术, 教程</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 13px;">教程</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a><span class="archive-list-count">18</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E6%97%A7%E4%BB%A3%E7%A0%81%E5%AD%A6%E4%B9%A0%E4%B8%8A%E4%BC%A0%E8%AE%B0%E5%BD%95-%E5%A4%A9%E6%B1%A0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8NLP_-_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" class="title">旧代码学习上传记录-天池-零基础入门NLP_-_新闻文本分类.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" class="title">萱仔求职系列——1.1_机器学习基础知识复习.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.2_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0+%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/" class="title">萱仔求职系列——1.2_机器学习基础知识复习+部分代码实战.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%942.1_python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="title">萱仔求职系列——2.1_python基础知识复习——数据类型+数据结构.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/" class="title">萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-萱仔求职系列——1.1_机器学习基础知识复习" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      萱仔求职系列——1.1_机器学习基础知识复习.html
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" class="article-date">
+	  <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p> 由于我最近拿到offer还是想再找找更好的机会，目前有很多的面试，面试的时候很多面试官会问一些机器学习的基础知识，由于我上一段实习的时候主要是机器学习和部分深度学习的内容，为了避免在面试的时候想不起来自己学习的内容，我还是决定边复习边学习，新开一个自我复习系列，巩固已经学到的知识。</p>
+<p> --------------------------------------------------------------------------------------------------------------</p>
+<h3 id="机器学习（准确的预测和分类等，牺牲部分可解释性获得强大的预测能力）数理统计（推断特征之间的关系）"><a href="#机器学习（准确的预测和分类等，牺牲部分可解释性获得强大的预测能力）数理统计（推断特征之间的关系）" class="headerlink" title="机器学习（准确的预测和分类等，牺牲部分可解释性获得强大的预测能力）&lt;——&gt;数理统计（推断特征之间的关系）"></a><strong>机器学习（准确的预测和分类等，牺牲部分可解释性获得强大的预测能力）&lt;——&gt;数理统计（推断特征之间的关系）</strong></h3><p><strong>机器学习——&gt;有监督，无监督，强化学习</strong></p>
+<p><strong>有监督：数据有标签，——&gt;回归（标签连续）、分类（标签离散）</strong></p>
+<p><strong>无监督：没有标签——&gt;聚类（识别数据的组）、降维（从高维数据检测识别低维的数据结构）</strong></p>
+<p><strong>强化学习：让他自己学习</strong></p>
+<p><strong>机器学习的分类主要包括有监督学习、无监督学习和强化学习。每个类别都有其独特的特点和应用场景。以下是对这三种主要类型的详细介绍：</strong> </p>
+<h2 id="1-有监督学习-Supervised-Learning"><a href="#1-有监督学习-Supervised-Learning" class="headerlink" title="1. 有监督学习 (Supervised Learning)"></a>1. 有监督学习 (Supervised Learning)</h2><p> 训练数据集中的每个样本都有对应的标签（或目标值），模型学习输入到输出的映射关系。模型的目标是根据输入预测输出，常用于分类和回归任务。</p>
+<h4 id="常用算法及其原理"><a href="#常用算法及其原理" class="headerlink" title="常用算法及其原理"></a>常用算法及其原理</h4><h5 id="回归算法"><a href="#回归算法" class="headerlink" title="回归算法"></a>回归算法</h5><ul>
+<li><strong>线性回归 (Linear Regression)</strong></li>
+</ul>
+<p> ：</p>
+<pre><code>+ **原理**
+
+ ：找到一个线性函数，使得预测值与实际值之间的误差最小。
++ **应用**
+
+ ：
+ 
+**房价预测**
+
+ ：根据特征（如房屋面积、房间数量、地理位置等）预测房价。
+ 
+**股票价格预测**
+
+ ：根据历史价格和其他相关指标预测股票的未来价格。
+ 
+**销售预测**
+
+ ：根据历史销售数据和市场因素预测未来销售额。
++ 线性回归是一种基本的回归分析方法，用于建立特征（自变量）和目标变量（因变量）之间的线性关系。它通过最小化预测值与实际值之间的误差来找到最佳的回归函数。
+</code></pre>
+<p> 线性回归模型假设目标变量 y与特征变量 X之间的关系可以用一个线性函数表示：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/ca5f68c9959741bb81ce74df09ee1858.png"></p>
+<p> 找到回归系数 β 使得<br> <strong>预测值</strong><br> 与<br> <strong>实际值</strong><br> 之间的误差最小。误差通常用均方误差（Mean Squared Error, MSE）来度量：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/05d031e3038844159499c95f6b799250.png"></p>
+<p> 最小二乘法是最常用的方法，通过最小化误差平方和来估计回归系数。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/3c72a78f60eb4946a448e70b6a16d511.png"></p>
+<ul>
+<li><strong>岭回归 (Ridge Regression)</strong></li>
+</ul>
+<p> ：</p>
+<pre><code>+ **原理**
+
+ ：在线性回归的基础上加入L2正则化项，防止过拟合。
++ **应用**
+
+ ：高维数据的回归分析。
+ 
+**高维数据的回归分析**
+
+ ：如基因数据分析、文本数据处理等，特征维度远大于样本数的场景。
+ 
+**解决多重共线性问题**
+
+ ：当特征之间存在高度相关性时，岭回归能提供更稳定的回归系数估计。
+</code></pre>
+<p><img src="https://i-blog.csdnimg.cn/direct/8b4d6a2d99ce4b9dab14b52c1aadccf9.png"></p>
+<ul>
+<li><strong>Lasso 回归 (Lasso Regression)</strong></li>
+</ul>
+<p> ：</p>
+<pre><code>+ **原理**
+
+ ：是在线性回归的基础上加入 L1 正则化项，通过引入绝对值的惩罚项来约束回归系数，使得一些回归系数收缩到零。这种特性使得 Lasso 回归不仅可以用于预测，还可以进行特征选择。
++ **应用**
+
+ ：特征选择和预测。
+</code></pre>
+<p><img src="https://i-blog.csdnimg.cn/direct/32139e9205a84c74bacd95b5260494cb.png"></p>
+<ul>
+<li><p><strong>Lasso 回归 vs. 岭回归</strong><br> ：</p>
+<ul>
+<li><strong>Lasso 回归</strong><br>   ：使用 L1 正则化项，进行特征选择，将不重要的特征的系数缩减为零。</li>
+<li><strong>岭回归</strong><br>   ：使用 L2 正则化项，不会将系数缩减为零，但可以减少系数的大小，从而减少过拟合。</li>
+</ul>
+</li>
+<li><p><strong>多项式回归 (Polynomial Regression)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：将特征进行多项式扩展，捕捉非线性关系。</li>
+<li><strong>应用</strong><br>   ：非线性数据的回归分析。</li>
+</ul>
+</li>
+</ul>
+<h5 id="分类算法"><a href="#分类算法" class="headerlink" title="分类算法"></a>分类算法</h5><ul>
+<li><strong>逻辑回归 (Logistic Regression)</strong></li>
+</ul>
+<p> ：</p>
+<pre><code>+ **原理**
+
+ ：使用逻辑函数将线性组合映射到0到1之间，表示事件发生的概率。
++ **应用**
+
+ ：二分类问题，如垃圾邮件分类、疾病预测。
+ 
+**二分类问题** 
+ ：逻辑回归广泛应用于各种二分类问题，如垃圾邮件分类、疾病预测、客户流失预测等。
+ **概率预测** 
+ ：除了分类，逻辑回归还可以输出事件发生的概率。
+</code></pre>
+<p><img src="https://i-blog.csdnimg.cn/direct/21b664ce932541fba6dcd6c1791b4906.png"></p>
+<table>
+<thead>
+<tr>
+<th>对比其他算法  1. <strong>逻辑回归 vs. 线性回归</strong>   ：   	* <strong>逻辑回归</strong>  	 ：用于分类问题，输出的是概率值。 	* <strong>线性回归</strong>  	 ：用于回归问题，输出的是连续值。 2. <strong>逻辑回归 vs. 决策树</strong>   ：   	* <strong>逻辑回归</strong>  	 ：基于线性模型，适用于线性可分数据，易于解释。 	* <strong>决策树</strong>  	 ：基于树状结构，可以捕捉复杂的非线性关系，但容易过拟合。 3. <strong>逻辑回归 vs. 支持向量机（SVM）</strong>   ：   	* <strong>逻辑回归</strong>  	 ：输出概率，易于解释和计算效率高。 	* <strong>SVM</strong>  	 ：通过最大化间隔实现分类，适用于高维数据，但计算复杂度高，参数调优复杂。 4. <strong>逻辑回归 vs. 朴素贝叶斯</strong>   ：   	* <strong>逻辑回归</strong>  	 ：不假设特征之间的独立性，适用于特征之间相关性较强的数据。 	* <strong>朴素贝叶斯</strong>  	 ：假设特征之间相互独立，计算效率高，适用于高维数据。</th>
+</tr>
+</thead>
+</table>
+<ul>
+<li><p><strong>支持向量机 (SVM)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：<br>   <strong>找到最大化分类边界的超平面。</strong><br>   支持向量机（Support Vector Machine, SVM）是一种监督学习模型，用于分类和回归分析。其主要思想是找到一个能够最大化分类边界的超平面，以此将不同类别的样本分开。在二分类问题中，SVM 通过选择支持向量（位于分类边界上的样本点）来确定最优的分类超平面。对于线性可分数据，SVM 的目标是找到一个决策超平面，使得两个类别之间的间隔最大化。这个间隔被称为“最大间隔”（Maximum Margin）。对于线性不可分的数据，SVM 通过引入核函数（Kernel Function）将数据映射到高维空间，使得在高维空间中可以找到线性可分的超平面。</li>
+<li><strong>应用</strong><br>   ：文本分类、图像识别。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/direct/4fc64aba9cf04221ad03c76b0e2926a8.png"></p>
+<table>
+<thead>
+<tr>
+<th>对比其他算法  1. <strong>SVM vs. 逻辑回归</strong>   ：   	* <strong>SVM</strong>  	 ：最大化分类间隔，适用于高维数据，支持非线性分类。 	* <strong>逻辑回归</strong>  	 ：线性模型，适用于线性可分数据，输出分类概率，计算效率高。 2. <strong>SVM vs. 决策树</strong>   ：   	* <strong>SVM</strong>  	 ：基于超平面分类，适用于高维数据，易于处理非线性问题。 	* <strong>决策树</strong>  	 ：基于树状结构分类，易于解释，适用于处理缺失数据和类别不均衡的数据。 3. <strong>SVM vs. KNN（K近邻）</strong>   ：   	* <strong>SVM</strong>  	 ：训练时间较长，但预测时间较短，适用于高维数据。 	* <strong>KNN</strong>  	 ：训练时间较短，但预测时间较长，对大规模数据和高维数据不友好。 4. <strong>SVM vs. 神经网络</strong>   ：   	* <strong>SVM</strong>  	 ：模型较为简单，适用于中小规模数据，参数调优相对复杂。 	* <strong>神经网络</strong>  	 ：适用于大规模数据和复杂非线性问题，具有更高的灵活性，但需要更多的计算资源和更长的训练时间。</th>
+</tr>
+</thead>
+</table>
+<ul>
+<li><strong>决策树 (Decision Tree)</strong></li>
+</ul>
+<p> ：</p>
+<pre><code>+ **原理**
+
+ ：
+ 
+**递归分割特征空间，构建树结构。**
+
+ 决策树是一种用于分类和回归任务的树形模型，通过递归地分割特征空间来构建树结构。在每个节点上，决策树选择一个特征及其阈值，以最佳方式将数据分割为不同的子集，从而使得每个子集的纯度最大化。这个过程一直递归进行，直到达到停止条件（如节点中的样本数小于某个阈值，或达到最大深度）。
++ **应用**
+
+ ：分类和回归任务。
+</code></pre>
+<p><strong>信息增益</strong><br> （Information Gain）： 信息增益是通过衡量分割前后信息熵的减少量来选择分割特征。信息熵（Entropy）的计算公式为：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/fee6b42740a041ada7942ff755008823.png"></p>
+<p><strong>基尼指数</strong><br> （Gini Index）： 基尼指数用于衡量数据集的不纯度，其计算公式为：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/2cd948ee295441a1b8e06327272118ee.png"></p>
+<p><strong>卡方统计量</strong><br> （Chi-square）： 卡方统计量用于衡量特征与目标变量之间的独立性，其计算公式为：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/7d1cc9185fce421aab963f1b1b307244.png"></p>
+<ul>
+<li><p><strong>随机森林 (Random Forest)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：集成多棵决策树，通过多数投票或平均结果进行预测。决策树通过递归地分割特征空间来构建树结构，每个节点代表一个特征的测试条件，每个分支代表测试结果，每个叶节点代表一个类别或回归值。决策树的构建过程包括选择最佳分割特征和分割点，以最大化节点纯度。</li>
+<li><strong>应用</strong><br>   ：分类、回归任务。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/direct/9e126888c83f4ed79d9a7c4f462bf2d0.png"></p>
+<ul>
+<li>梯度提升树 (Gradient Boosting Tree, GBT)</li>
+</ul>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p> 梯度提升树通过逐步构建决策树，每棵树都在前一棵树的基础上进行优化，以最小化损失函数。每次迭代中，新的树拟合当前模型的残差。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/5a7cf65b67544d6084955a1c85f83437.png"></p>
+<ul>
+<li><p>极端梯度提升 (XGBoost)</p>
+<ul>
+<li><strong>原理</strong><br>   ：XGBoost 是梯度提升的优化实现，具有更高的效率和灵活性，通过正则化和并行计算加速训练过程，并能处理缺失值。</li>
+<li><strong>应用</strong><br>   ：</li>
+<li><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://i-blog.csdnimg.cn/direct/2c8be37d399642c2886a185219de464e.png"></h2></li>
+</ul>
+</li>
+<li><p>LightGBM</p>
+<ul>
+<li><strong>原理</strong><br>   ：LightGBM 是一种基于直方的梯度提升框架，采用基于叶节点的生长策略，提高了计算效率。它通过优化数据存储和分裂策略，实现更快的训练速度和更低的内存消耗。</li>
+<li><strong>应用</strong><br>   ：</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/direct/3a8cc06f987f487fb68645047bcae1a0.png"></p>
+<p> 决策树及其变种（如随机森林、梯度提升树、XGBoost、LightGBM、CatBoost）在分类和回归任务中具有广泛应用。决策树通过递归分割特征空间构建树结构，而其变种通过集成学习和优化技术提高模型的性能和泛化能力。理解这些算法的原理和公式，有助于在实际应用中选择和优化模型。</p>
+<table>
+<thead>
+<tr>
+<th>随机森林与XGBoost的区别     随机森林 (Random Forest)  1. <strong>原理</strong>   ：   	* 随机森林是一种集成学习方法，由多个决策树组成。每棵决策树都是通过对训练数据的随机抽样生成的。最终的预测结果通过对所有决策树的预测结果进行投票（分类任务）或平均（回归任务）得到。 	* 在随机森林中，Bootstrap 采样（有放回抽样）的过程使得每个数据点在每棵树的训练数据集中被重复采样的概率可以通过以下公式计算：    1. <strong>随机性</strong>   ：   	* <strong>数据随机性</strong>  	 ：训练每棵树时，使用的是数据的随机子集（有放回抽样，即 Bootstrap 采样）。即每棵树的训练数据集是从原始数据集中随机抽取的。由于是有放回采样，每个样本可能在不同的树中出现多次。 	* <strong>特征随机性</strong>  	 ：在构建每棵树时，对每个节点的分裂特征进行随机选择。即在每个节点分裂时，只考虑随机选择的部分特征而不是全部特征，从而增加树之间的多样性。 2. <strong>并行化</strong>   ：   	* 随机森林的每棵树是独立构建的，因此可以并行训练多棵树。这使得随机森林在训练时能够利用多核处理器的并行计算能力，提高计算效率。 3. <strong>优缺点</strong>   ：   	* <strong>优点</strong>  	 ：减少了过拟合，具有较好的泛化能力，适用于大规模数据集。 	* <strong>缺点</strong>  	 ：模型较为复杂，解释性较差，预测时需要对所有树的结果进行投票或平均，计算成本较高。    XGBoost (Extreme Gradient Boosting)  1. <strong>原理</strong>   ：   	* XGBoost 是一种梯度提升树方法，通过逐步构建决策树，每棵树都在前一棵树的基础上进行优化，以最小化损失函数。它采用了贪心算法来优化模型，加入了正则化项来减少过拟合。 2. <strong>并行化</strong>   ：   	* <strong>特征并行</strong>  	 ：XGBoost 对特征进行并行处理。树的分裂是在每个节点的所有特征上并行计算的。使用直方图算法（Histogram-Based Method），将连续特征离散化为直方图，然后并行地计算每个特征的分裂增益。 	* <strong>样本并行</strong>  	 ：在训练过程中，XGBoost 使用了块分裂方法，将数据分成多个块，并在不同的块上并行训练。每个块包含了数据的不同部分，这些块可以同时进行计算。 	* <strong>树的并行</strong>  	 ：XGBoost 在构建树的过程中，可以并行构建不同的树（在某些实现中）。 3. <strong>优缺点</strong>   ：   	* <strong>优点</strong>  	 ：高效、准确，支持并行计算和分布式计算，对缺失值处理较好，适用于大规模数据集。 	* <strong>缺点</strong>  	 ：参数较多，需要调优，模型复杂性较高，对数据预处理要求较高。    XGBoost 的并行实现     XGBoost 的并行实现主要体现在以下几个方面：  1. <strong>特征并行</strong>   ：   	* 在每次分裂时，XGBoost 会遍历所有特征，计算每个特征的分裂增益。通过将特征分配到不同的线程中，XGBoost 能够并行计算各个特征的分裂增益，从而加速分裂过程。 2. <strong>样本并行</strong>   ：   	* 数据集被划分为多个块（或子样本），每个块在不同的线程中进行计算。这种并行化使得模型训练过程能够利用多核处理器的计算能力。 3. <strong>直方图算法</strong>   ：   	* XGBoost 使用直方图算法来加速分裂点的搜索。特征值被离散化为直方图桶，然后并行计算每个桶的增益。这样可以大大减少计算量，提高训练速度。 4. <strong>块分裂方法</strong>   ：   	* XGBoost 通过将数据划分为块，并在块之间并行计算，进一步提高了训练速度。每个块包含数据的一部分，这些块可以同时处理，并在最终合并结果。    随机森林的随机性  1. <strong>数据随机性</strong>   ：   	* 随机森林通过 Bootstrap 采样（有放回抽样）来生成每棵决策树的训练数据集。即每棵决策树训练时使用的数据集是从原始数据集中随机抽取的样本，有可能重复抽取相同的数据点。 2. <strong>特征随机性</strong>   ：   	* 在每个节点分裂时，只随机选择部分特征进行考虑，而不是使用所有特征。这样可以增加树的多样性，减少过拟合。</th>
+</tr>
+</thead>
+</table>
+<ul>
+<li><p><strong>k近邻 (k-NN)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：通过计算与训练样本的距离，选择最近的k个邻居进行预测。</li>
+<li><strong>应用</strong><br>   ：图像识别、推荐系统。</li>
+</ul>
+</li>
+<li><p><strong>朴素贝叶斯 (Naive Bayes)</strong></p>
+</li>
+</ul>
+<p> ：</p>
+<pre><code>+ **原理**
+
+ ：基于贝叶斯定理和特征条件独立假设进行分类。朴素贝叶斯分类器是一种基于贝叶斯定理的简单且高效的分类算法。它广泛应用于文本分类、垃圾邮件过滤、情感分析等领域。尽管它的假设条件比较强（特征独立性假设），但在许多实际问题中表现良好。
++ **应用**
+
+ ：文本分类、情感分析。
++ ![](https://i-blog.csdnimg.cn/direct/89c098bdaaf5462ba1273049bd177b6e.png)
++ #### 类型
+
+
+    - **高斯朴素贝叶斯** 
+     ：
+     
+    
+    
+        * 适用于特征值符合高斯分布（连续特征）的情况。
+        * 特征的条件概率密度函数假设为高斯分布。
+    - **多项式朴素贝叶斯** 
+     ：
+     
+    
+    
+        * 适用于特征值为计数或频率的情况（例如文本数据的词频）。
+        * 特征的条件概率假设为多项分布。
+    - **伯努利朴素贝叶斯** 
+     ：
+     
+    
+    
+        * 适用于特征为二值特征的情况（例如是否出现某个词）。
+        * 特征的条件概率假设为伯努利分布。
+</code></pre>
+<ul>
+<li><p><strong>神经网络 (Neural Networks)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：通过多个层的神经元连接进行特征提取和映射。</li>
+<li><strong>应用</strong><br>   ：图像识别、语音识别、自然语言处理。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-无监督学习-Unsupervised-Learning"><a href="#2-无监督学习-Unsupervised-Learning" class="headerlink" title="2. 无监督学习 (Unsupervised Learning)"></a>2. 无监督学习 (Unsupervised Learning)</h2><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li><strong>数据无标签</strong><br> ：训练数据集中的样本没有标签，模型需自行发现数据的结构和模式。</li>
+<li><strong>目标探索</strong><br> ：模型的目标是探索数据的内在结构，常用于聚类和降维任务。</li>
+</ul>
+<h4 id="常用算法及其原理-1"><a href="#常用算法及其原理-1" class="headerlink" title="常用算法及其原理"></a>常用算法及其原理</h4><h5 id="聚类算法"><a href="#聚类算法" class="headerlink" title="聚类算法"></a>聚类算法</h5><ul>
+<li><p><strong>k-means 聚类 (k-means Clustering)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：通过最小化样本到最近质心的距离进行聚类。K-means 聚类是一种基于划分的方法，用于将数据集分成 kkk 个不同的簇或群组。每个簇由一个质心（centroid）表示，质心是簇中所有点的均值。</li>
+<li><strong>应用</strong><br>   ：客户分群、图像分割。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/direct/d6d8cb03322f446d87d424fdf9db53b9.png"></p>
+<table>
+<thead>
+<tr>
+<th>K-means 聚类 (K-means Clustering)     原理  * <strong>任务</strong>   ：无监督学习的聚类算法。 * <strong>目标</strong>   ：将数据集划分成 k 个簇，使得每个簇内的样本尽可能相似，而簇与簇之间的样本尽可能不同。 * <strong>方法</strong>   ： 	1. <strong>初始化</strong>  	 ：随机选择 k 个初始质心。 	2. <strong>分配阶段</strong>  	 ：将每个数据点分配到最近的质心所在的簇。 	3. <strong>更新阶段</strong>  	 ：计算每个簇的质心，并更新质心的位置。 	4. <strong>迭代</strong>  	 ：重复分配和更新阶段，直到质心不再变化（或变化很小）。    主要特点  * <strong>无监督</strong>   ：不需要标签信息，主要用于数据的分组和模式发现。 * <strong>输出</strong>   ：簇的划分和每个簇的质心。 * <strong>依赖</strong>   ：簇的数量 kkk 需要预先指定。 * <strong>应用</strong>   ：客户分群、图像分割、数据预处理等。    K-最近邻 (KNN)     原理  * <strong>任务</strong>   ：有监督学习的分类或回归算法。 * <strong>目标</strong>   ：根据已标记的训练数据对新样本进行分类或回归。 * <strong>方法</strong>   ： 	1. <strong>选择 k</strong>  	 ：选择一个正整数 k。 	2. <strong>计算距离</strong>  	 ：对于每个待分类样本，计算它与训练集中所有样本的距离（如欧几里得距离）。 	3. <strong>选择最近邻</strong>  	 ：选择距离最近的 k 个样本。 	4. <strong>投票&#x2F;平均</strong>  	 ： 		+ <strong>分类</strong>  		 ：对这 k 个邻居的标签进行投票，选择最多的类别作为新样本的预测类别。 		+ <strong>回归</strong>  		 ：对这 k 个邻居的目标值取平均，作为新样本的预测值。    主要特点  * <strong>有监督</strong>   ：需要已标记的训练数据，用于分类或回归任务。 * <strong>输出</strong>   ：分类结果或回归值。 * <strong>依赖</strong>   ：选择的 k 值会影响分类结果或回归预测。 * <strong>应用</strong>   ：文本分类、图像分类、推荐系统等。    区别总结  1. <strong>任务类型</strong>   ：   	* <strong>K-means</strong>  	 ：无监督学习（聚类）。 	* <strong>KNN</strong>  	 ：有监督学习（分类或回归）。 2. <strong>输入</strong>   ：   	* <strong>K-means</strong>  	 ：只需要数据，不需要标签。 	* <strong>KNN</strong>  	 ：需要带有标签的训练数据。 3. <strong>输出</strong>   ：   	* <strong>K-means</strong>  	 ：每个样本的簇分配和质心。 	* <strong>KNN</strong>  	 ：新样本的预测标签或值。 4. <strong>算法目标</strong>   ：   	* <strong>K-means</strong>  	 ：寻找数据的自然簇，最小化簇内的样本到质心的距离。 	* <strong>KNN</strong>  	 ：基于已知样本的标签或值，对新样本进行预测。 5. <strong>适用场景</strong>   ：   	* <strong>K-means</strong>  	 ：用于发现数据的自然分组或模式，适用于数据探索和预处理。 	* <strong>KNN</strong>  	 ：用于对新样本进行预测，适用于分类和回归任务。</th>
+</tr>
+</thead>
+</table>
+<ul>
+<li><p><strong>层次聚类 (Hierarchical Clustering)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：通过合并或分裂簇生成层次结构。</li>
+<li><strong>应用</strong><br>   ：基因表达分析、文档聚类。</li>
+</ul>
+</li>
+<li><p><strong>DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：基于密度连接样本，形成簇。</li>
+<li><strong>应用</strong><br>   ：地理数据分析、异常检测。</li>
+</ul>
+</li>
+</ul>
+<h5 id="降维算法"><a href="#降维算法" class="headerlink" title="降维算法"></a>降维算法</h5><ul>
+<li><p><strong>主成分分析 (PCA, Principal Component Analysis)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong></li>
+</ul>
+<p>   ：通过线性变换将数据投影到最大方差方向。主成分分析（PCA）是一种降维技术，其核心思想是通过线性变换将数据投影到一个新的坐标系中，使得数据在新的坐标系下的方差最大。具体步骤如下：</p>
+<ul>
+<li><p><strong>1.数据中心化</strong><br>   ：</p>
+<ul>
+<li>将数据的每一维减去其均值，使数据的均值为零。这是为了使数据的协方差矩阵不受偏移的影响。</li>
+</ul>
+</li>
+<li><p><strong>2.计算协方差矩阵</strong><br>   ：</p>
+<ul>
+<li>协方差矩阵描述了数据各特征之间的相关性。对于 n维数据，协方差矩阵是n×n 的矩阵，矩阵中的每个元素表示两个特征之间的协方差。</li>
+</ul>
+</li>
+<li><p><strong>3.计算特征值和特征向量</strong><br>   ：</p>
+<ul>
+<li>计算协方差矩阵的特征值和特征向量。特征值表示数据沿着特征向量方向的方差大小。</li>
+</ul>
+</li>
+<li><p><strong>4.选择主成分</strong><br>   ：</p>
+<ul>
+<li>将特征向量按特征值的大小排序，选择前 k个特征向量（主成分），这些主成分对应最大方差的方向。选择的数量 k是降维的维度。</li>
+</ul>
+</li>
+<li><p><strong>5.投影数据</strong><br>   ：</p>
+<ul>
+<li>将数据投影到选定的主成分上，得到降维后的数据。这个过程通过特征向量矩阵的乘积完成。</li>
+</ul>
+</li>
+<li><p><strong>应用</strong><br>   ：数据预处理、可视化。</p>
+</li>
+<li><p><img src="https://i-blog.csdnimg.cn/direct/94cfd02d7b5e4d2782f04b1adbdad9bd.png"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>t-SNE (t-Distributed Stochastic Neighbor Embedding)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：通过最小化高维空间和低维空间的分布差异进行降维。</li>
+<li><strong>应用</strong><br>   ：高维数据的可视化。</li>
+</ul>
+</li>
+<li><p><strong>线性判别分析 (LDA, Linear Discriminant Analysis)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：通过最大化类间方差和类内方差比值进行降维。</li>
+<li><strong>应用</strong><br>   ：分类任务的降维。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-强化学习-Reinforcement-Learning"><a href="#3-强化学习-Reinforcement-Learning" class="headerlink" title="3. 强化学习 (Reinforcement Learning)"></a>3. 强化学习 (Reinforcement Learning)</h2><h4 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h4><ul>
+<li><strong>让模型自行学习</strong><br> ：通过与环境的交互，自行探索最优策略。</li>
+<li><strong>目标长期收益</strong><br> ：模型的目标是最大化累计奖励，常用于动态和连续决策问题。</li>
+</ul>
+<h4 id="常用算法及其原理-2"><a href="#常用算法及其原理-2" class="headerlink" title="常用算法及其原理"></a>常用算法及其原理</h4><ul>
+<li><p><strong>马尔可夫决策过程 (MDP, Markov Decision Process)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：基于状态、动作和奖励的动态规划。</li>
+<li><strong>应用</strong><br>   ：描述强化学习环境。</li>
+</ul>
+</li>
+<li><p><strong>深度Q网络 (DQN, Deep Q-Network)</strong><br> ：</p>
+<ul>
+<li><strong>原理</strong><br>   ：使用神经网络近似Q值函数。</li>
+<li><strong>应用</strong><br>   ：复杂环境下的强化学习，如游戏AI。</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-特点对比"><a href="#4-特点对比" class="headerlink" title="4. 特点对比"></a>4. 特点对比</h2><ul>
+<li><p><strong>有监督学习 vs. 无监督学习</strong><br> ：</p>
+<ul>
+<li>有监督学习有明确的目标，模型根据已知标签进行训练，适用于分类和回归问题。</li>
+<li>无监督学习没有标签，模型需自行发现数据的结构，适用于聚类和降维问题。</li>
+</ul>
+</li>
+<li><p><strong>有监督学习 vs. 强化学习</strong><br> ：</p>
+<ul>
+<li>有监督学习使用静态数据集进行训练，目标是根据输入预测输出。</li>
+<li>强化学习通过与环境的动态交互进行学习，目标是最大化累计奖励。</li>
+</ul>
+</li>
+<li><p><strong>无监督学习 vs. 强化学习</strong><br> ：</p>
+<ul>
+<li>无监督学习探索数据的内在结构，没有明确的目标标签。</li>
+<li>强化学习通过试错过程与环境交互，自行探索最优策略。</li>
+</ul>
+</li>
+</ul>
+<p><strong>特化与泛化：泛化能力——&gt;验证一个模型是否强，得到的机器学习模型对新东西的预测能力</strong></p>
+<h3 id="过拟合、欠拟合"><a href="#过拟合、欠拟合" class="headerlink" title="过拟合、欠拟合"></a><strong>过拟合、欠拟合</strong></h3><h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a><strong>解决方案：</strong></h3><p><strong>1、拓展数据集（数据增强：①有监督②无监督：例如生成对抗网络，随机生成一些新的数据）</strong></p>
+<p><strong>2、正则化：在损失函数上加正则化项，①L1②L2：岭回归</strong></p>
+<p><strong>3、减少特征的选择①dropout ②集成学习：例如决策树变成随机森林 ③早停：提早结束对神经网络迭代</strong></p>
+<h3 id="过拟合与欠拟合"><a href="#过拟合与欠拟合" class="headerlink" title="过拟合与欠拟合"></a>过拟合与欠拟合</h3><p><strong>过拟合</strong><br> （Overfitting）和<br> <strong>欠拟合</strong><br> （Underfitting）是机器学习中常见的两个问题。</p>
+<ul>
+<li><p><strong>过拟合</strong><br> ：</p>
+<ul>
+<li><strong>定义</strong><br>   ：模型在训练数据上表现很好，但在未见过的数据上表现较差。模型过于复杂，捕捉了训练数据中的噪声或异常值，导致泛化能力差。</li>
+<li><strong>表现</strong><br>   ：训练误差很低，但验证或测试误差较高。</li>
+</ul>
+</li>
+<li><p><strong>欠拟合</strong><br> ：</p>
+<ul>
+<li><strong>定义</strong><br>   ：模型过于简单，无法捕捉数据中的潜在模式，无论是在训练数据还是未见过的数据上表现都不好。</li>
+<li><strong>表现</strong><br>   ：训练误差和验证或测试误差都较高。</li>
+</ul>
+</li>
+</ul>
+<h3 id="过拟合与欠拟合——解决方案"><a href="#过拟合与欠拟合——解决方案" class="headerlink" title="过拟合与欠拟合——解决方案"></a>过拟合与欠拟合——解决方案</h3><h4 id="1-拓展数据集"><a href="#1-拓展数据集" class="headerlink" title="1. 拓展数据集"></a>1. 拓展数据集</h4><ul>
+<li><strong>数据增强</strong><br> ：<ul>
+<li><strong>有监督数据增强</strong><br>   ：通过对训练数据进行变换（例如旋转、缩放、裁剪等），增加数据多样性。例如，图像分类中的数据增强技术。</li>
+<li><strong>无监督数据增强</strong><br>   ：<ul>
+<li><strong>生成对抗网络（GANs）</strong><br>   ：通过生成对抗网络生成新的样本数据，增加数据集的多样性。</li>
+<li><strong>随机生成</strong><br>   ：例如随机生成数据点或特征组合，来扩展数据集。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-正则化"><a href="#2-正则化" class="headerlink" title="2. 正则化"></a>2. 正则化</h4><ul>
+<li><p><strong>L1 正则化</strong><br> （Lasso）：</p>
+<ul>
+<li><strong>定义</strong><br>   ：在损失函数中加入特征系数绝对值的和作为正则化项，具有特征选择的效果，可以使某些特征的权重变为零。</li>
+<li><strong>公式</strong><br>   ：<br>   <img src="https://i-blog.csdnimg.cn/direct/4820f54d7ab840c8bb2bb3c51aed43a9.png"></li>
+<li><strong>应用</strong><br>   ：适用于需要特征选择的场景。</li>
+</ul>
+</li>
+<li><p><strong>L2 正则化</strong><br> （Ridge）：</p>
+<ul>
+<li><strong>定义</strong><br>   ：在损失函数中加入特征系数的平方和作为正则化项，可以防止模型权重过大，使得模型更加平滑。</li>
+<li><strong>公式</strong><br>   ：<br>   <img src="https://i-blog.csdnimg.cn/direct/55ca85165cf645f89d6a6f523e233e3c.png"></li>
+<li><strong>应用</strong><br>   ：适用于模型权重的控制，防止过拟合。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-减少特征的选择"><a href="#3-减少特征的选择" class="headerlink" title="3. 减少特征的选择"></a>3. 减少特征的选择</h4><ul>
+<li><p><strong>Dropout</strong><br> ：</p>
+<ul>
+<li><strong>定义</strong><br>   ：在训练过程中随机丢弃神经网络中的一部分节点，防止节点之间的复杂共适应关系，从而减轻过拟合。</li>
+<li><strong>应用</strong><br>   ：常用于深度神经网络的训练中。</li>
+</ul>
+</li>
+<li><p><strong>集成学习</strong><br> ：</p>
+<ul>
+<li><strong>随机森林</strong><br>   ：通过多个决策树的组合来提高模型的稳定性和泛化能力，减少单棵树的过拟合问题。</li>
+<li><strong>Bagging 和 Boosting</strong><br>   ：其他集成学习方法，通过组合多个模型来提高性能和稳定性。</li>
+</ul>
+</li>
+<li><p><strong>早停</strong><br> ：</p>
+<ul>
+<li><strong>定义</strong><br>   ：在训练过程中监控验证集的表现，如果验证集误差开始增加，则停止训练。这有助于防止过拟合。</li>
+<li><strong>应用</strong><br>   ：适用于深度学习模型的训练过程中，帮助选择最佳的训练轮次。</li>
+</ul>
+</li>
+</ul>
+<h3 id="评价指标："><a href="#评价指标：" class="headerlink" title="评价指标："></a><strong>评价指标：</strong></h3><p><strong>分类</strong></p>
+<p><strong>错误率e=1&#x2F;m*100%，acc=1-e，查准率P：预测的有多少是真的，召回率R：所有为1的样本中，预测对了多少</strong></p>
+<p><strong>P-R曲线、ROC曲线（曲线下面积——AUC）、ks曲线、</strong></p>
+<p><strong>回归</strong></p>
+<p><strong>r^2，均方误差mse</strong></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" title="萱仔求职系列——1.1_机器学习基础知识复习.html" target="_blank" rel="external">http://example.com/2024/09/05/萱仔求职系列——1.1_机器学习基础知识复习/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://blog.csdn.net/qq_44117805?" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://blog.csdn.net/qq_44117805?" target="_blank"><span class="text-dark">萱仔</span><small class="ml-1x">萱仔的自我学习记录，冲冲冲！</small></a></h3>
+        <div>个人简介</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/09/05/%E6%97%A7%E4%BB%A3%E7%A0%81%E5%AD%A6%E4%B9%A0%E4%B8%8A%E4%BC%A0%E8%AE%B0%E5%BD%95-%E5%A4%A9%E6%B1%A0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8NLP_-_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" title="旧代码学习上传记录-天池-零基础入门NLP_-_新闻文本分类.html"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.2_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0+%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/" title="萱仔求职系列——1.2_机器学习基础知识复习+部分代码实战.html"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

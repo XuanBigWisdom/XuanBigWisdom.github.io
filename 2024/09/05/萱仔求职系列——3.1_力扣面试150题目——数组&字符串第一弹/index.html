@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html | 萱仔的学习小屋</title>
+  <meta name="description" content="进行一些求职面经和笔试的学习，进行自我提升">
+<meta property="og:type" content="article">
+<meta property="og:title" content="萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html">
+<meta property="og:url" content="http://example.com/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/index.html">
+<meta property="og:site_name" content="萱仔的学习小屋">
+<meta property="og:description" content="进行一些求职面经和笔试的学习，进行自我提升">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/0919dc18630f4dacb2a4e52575aeacdd.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/cffa471e61cb4e48932d6199927aaae8.png">
+<meta property="article:published_time" content="2024-09-05T06:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-05T17:02:33.258Z">
+<meta property="article:author" content="xuanzaismart">
+<meta property="article:tag" content="技术, 教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/0919dc18630f4dacb2a4e52575aeacdd.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/index.html">
+  
+    <link rel="alternate" href="[object Object]" title="萱仔的学习小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://blog.csdn.net/qq_44117805?" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">萱仔</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">萱仔的自我学习记录，冲冲冲！</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hebei, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>不问收获，但问耕耘！冲冲冲，萱仔的自我学习记录博客，恭喜自己重新在github搭建个人博客，前面内容逐渐搬运到新博客之后和原CSDN博客同时更新，<br>CSDN网址：<a href="https://blog.csdn.net/qq_44117805?type=blog" target="_blank">https://blog.csdn.net/qq_44117805?type=blog</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">大模型学习记录</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/Python/">Python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-%E6%95%99%E7%A8%8B/" rel="tag">Hexo, 教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" rel="tag">常用库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-nlp/" rel="tag">技术, nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Anaconda/" style="font-size: 13px;">Anaconda</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/Hexo-%E6%95%99%E7%A8%8B/" style="font-size: 13.5px;">Hexo, 教程</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" style="font-size: 13px;">常用库</a> <a href="/tags/%E6%8A%80%E6%9C%AF-nlp/" style="font-size: 13px;">技术, nlp</a> <a href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" style="font-size: 14px;">技术, 教程</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 13px;">教程</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a><span class="archive-list-count">18</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E6%97%A7%E4%BB%A3%E7%A0%81%E5%AD%A6%E4%B9%A0%E4%B8%8A%E4%BC%A0%E8%AE%B0%E5%BD%95-%E5%A4%A9%E6%B1%A0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8NLP_-_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" class="title">旧代码学习上传记录-天池-零基础入门NLP_-_新闻文本分类.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" class="title">萱仔求职系列——1.1_机器学习基础知识复习.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.2_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0+%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/" class="title">萱仔求职系列——1.2_机器学习基础知识复习+部分代码实战.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%942.1_python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="title">萱仔求职系列——2.1_python基础知识复习——数据类型+数据结构.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/" class="title">萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/" class="article-date">
+	  <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p> 由于最近求职又涉及到很多面试时候敲代码，我又不得不捡起我的老力扣，只能说刷题这个东西必须越耍越上瘾，我将稳定更新，每天做3-10题</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/studyplan/top-interview-150/" title="面试经典 150 题 - 学习计划 - 力扣（LeetCode）全球极客挚爱的技术成长平台">面试经典 150 题 - 学习计划 - 力扣（LeetCode）全球极客挚爱的技术成长平台</a> </p>
+<p> -------------------------------------------------------------------------------------------------------</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-sorted-array/" title="88. 合并两个有序数组">88. 合并两个有序数组</a> </p>
+<p> 给你两个按<br> <strong>非递减顺序</strong><br> 排列的整数数组<br> <code>nums1</code> </p>
+<p> 和<br> <code>nums2</code><br> ，另有两个整数<br> <code>m</code><br> 和<br> <code>n</code><br> ，分别表示<br> <code>nums1</code><br> 和<br> <code>nums2</code><br> 中的元素数目。</p>
+<p> 请你<br> <strong>合并</strong><br><code>nums2</code> </p>
+<p> 到<br> <code>nums1</code><br> 中，使合并后的数组同样按<br> <strong>非递减顺序</strong><br> 排列。</p>
+<p><strong>注意：</strong><br> 最终，合并后数组不应由函数返回，而是存储在数组<br> <code>nums1</code><br> 中。为了应对这种情况，<br> <code>nums1</code><br> 的初始长度为<br> <code>m + n</code><br> ，其中前<br> <code>m</code><br> 个元素表示应合并的元素，后<br> <code>n</code><br> 个元素为<br> <code>0</code><br> ，应忽略。<br> <code>nums2</code><br> 的长度为<br> <code>n</code><br> 。</p>
+<p> 这个题目吧，非常简单，要把n2合到n1里，不能重新搞一个新的表出来，由于它本身就是两个非递减的整数数组，我直接用3个指针就好啦，重点在于我要从后往前里面填入数据，因为他那个从前往后会盖住后面的数，没有空位。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/0919dc18630f4dacb2a4e52575aeacdd.png"></p>
+<p> 对比两个蓝色的，然后大的往绿色那填，就这么easy~</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -&gt; None:</span><br><span class="line">        # 初始化指针</span><br><span class="line">        n1 = m - 1  # nums1 的有效部分的最后一个元素</span><br><span class="line">        n2 = n - 1  # nums2 的最后一个元素</span><br><span class="line">        j = m + n - 1  # 合并后数组的最后一个位置</span><br><span class="line">        for i in range(m + n):</span><br><span class="line">            if n2 &lt; 0:#没有可以合并的啦</span><br><span class="line">                break</span><br><span class="line">            elif n1 &gt;= 0 and nums1[n1] &gt; nums2[n2]:</span><br><span class="line">                nums1[j] = nums1[n1]</span><br><span class="line">                n1=n1-1</span><br><span class="line">            else:</span><br><span class="line">                nums1[j] = nums2[n2]</span><br><span class="line">                n2=n2-1</span><br><span class="line">            j=j-1</span><br></pre></td></tr></table></figure>
+
+
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/" title="27. 移除元素">27. 移除元素</a> </p>
+<p> 给你一个数组<br> <code>nums</code> </p>
+<p> 和一个值<br> <code>val</code><br> ，你需要<br> <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95" title="原地">原地</a></strong><br> 移除所有数值等于<br> <code>val</code> </p>
+<p> 的元素。元素的顺序可能发生改变。然后返回<br> <code>nums</code><br> 中与<br> <code>val</code><br> 不同的元素的数量。</p>
+<p> 假设<br> <code>nums</code><br> 中不等于<br> <code>val</code><br> 的元素数量为<br> <code>k</code><br> ，要通过此题，您需要执行以下操作：</p>
+<ul>
+<li>更改<br> <code>nums</code><br> 数组，使<br> <code>nums</code><br> 的前<br> <code>k</code><br> 个元素包含不等于<br> <code>val</code><br> 的元素。<br> <code>nums</code><br> 的其余元素和<br> <code>nums</code><br> 的大小并不重要。</li>
+<li>返回<br> <code>k</code><br> 。</li>
+</ul>
+<p> 这个有一个题解写的很好，简单来说就是把所有不等于val的填到nums里</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def removeElement(self, nums: List[int], val: int) -&gt; int:</span><br><span class="line">        k=0</span><br><span class="line">        for i in range(0,len(nums)):</span><br><span class="line">            if nums[i]!=val:</span><br><span class="line">                nums[k]=nums[i]</span><br><span class="line">                k=k+1</span><br><span class="line">                #print(k)</span><br><span class="line">        return k</span><br></pre></td></tr></table></figure>
+
+
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/" title="26. 删除有序数组中的重复项">26. 删除有序数组中的重复项</a> </p>
+<p> 这个题我用字典记录出现过的数字，然后遍历即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def removeDuplicates(self, nums: List[int]) -&gt; int:</span><br><span class="line">        dic = &#123;&#125;  </span><br><span class="line">        k = 0  # 个数</span><br><span class="line">        </span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            if nums[i] not in dic:</span><br><span class="line">                dic[nums[i]] = True  # 记录该元素已经出现过</span><br><span class="line">                nums[k] = nums[i]  # 将非重复元素放在前面</span><br><span class="line">                k += 1  # 计数+1</span><br><span class="line"></span><br><span class="line">        return k</span><br></pre></td></tr></table></figure>
+
+
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/" title="80. 删除有序数组中的重复项 II">80. 删除有序数组中的重复项 II</a> </p>
+<p> 给你一个有序数组<br> <code>nums</code><br> ，请你<br> <strong><a target="_blank" rel="noopener" href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95" title=" 原地">原地</a></strong><br> 删除重复出现的元素，使得出现次数超过两次的元素<br> <strong>只出现两次</strong><br> ，返回删除后数组的新长度。</p>
+<p> 不要使用额外的数组空间，你必须在<br> <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95" title="原地 ">原地</a><br> 修改输入数组</strong><br> 并在使用 O(1) 额外空间的条件下完成。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def removeDuplicates(self, nums: List[int]) -&gt; int:</span><br><span class="line">        # 如果数组长度小于等于 2，直接返回长度</span><br><span class="line">        if len(nums) &lt;= 2:</span><br><span class="line">            return len(nums)</span><br><span class="line">        # k 指向要插入的下一个位置</span><br><span class="line">        k = 2</span><br><span class="line">        # 从索引 2 开始遍历数组</span><br><span class="line">        for i in range(2, len(nums)):</span><br><span class="line">            # 只要当前元素与 k-2 位置的元素不相同，说明没有超过两次</span><br><span class="line">            if nums[i] != nums[k - 2]:</span><br><span class="line">                nums[k] = nums[i]</span><br><span class="line">                k += 1</span><br><span class="line">        return k</span><br></pre></td></tr></table></figure>
+
+
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/majority-element/" title="169. 多数元素">169. 多数元素</a> </p>
+<p> 给定一个大小为<br> <code>n</code> </p>
+<p> 的数组<br> <code>nums</code><br> ，返回其中的多数元素。多数元素是指在数组中出现次数<br> <strong>大于</strong><br><code>⌊ n/2 ⌋</code><br> 的元素。</p>
+<p> 你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
+<p> 接着用字典解决熬，记住每个词出现的次数，我这个解法虽然很拉，但是个人认为思路简单，无脑解决问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def majorityElement(self, nums: List[int]) -&gt; int:</span><br><span class="line">        dic=&#123;&#125;</span><br><span class="line">        k=0</span><br><span class="line">        for i in range(0,len(nums)):</span><br><span class="line">            if nums[i] not in dic:</span><br><span class="line">                dic[nums[i]]=1 </span><br><span class="line">            elif nums[i]  in dic:</span><br><span class="line">                dic[nums[i]]=1+dic[nums[i]] #每个数字出现的次数，遇见了就加一个</span><br><span class="line">        for key, value in dic.items():</span><br><span class="line">            if value&gt;(len(nums)//2) :</span><br><span class="line">                print(key,value)</span><br><span class="line">                k=key #输出符合要求的key</span><br><span class="line">        return k </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotate-array/" title="189. 轮转数组">189. 轮转数组</a> </p>
+<p> 给定一个整数数组<br> <code>nums</code><br> ，将数组中的元素向右轮转<br> <code>k</code> </p>
+<p> 个位置，其中<br> <code>k</code> </p>
+<p> 是非负数。</p>
+<p><strong>真的很无语以下是一个使用了切片的错误代码，求有没有大佬可以帮看一下这个错误的为什么不对，明明print是对的。</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def rotate(self, nums: List[int], k: int) -&gt; None:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Do not return anything, modify nums in-place instead.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        n=len(nums)</span><br><span class="line">        n1=nums[0:k+1]</span><br><span class="line">        n2=nums[k+1:n]</span><br><span class="line">        nums2=n2</span><br><span class="line">        for i in range(0,len(n1)):</span><br><span class="line">            nums2.append(n1[i])</span><br><span class="line">            print(nums2)</span><br><span class="line">        return nums2</span><br></pre></td></tr></table></figure>
+
+
+<p> 这是结果：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/cffa471e61cb4e48932d6199927aaae8.png"></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/" title="萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html" target="_blank" rel="external">http://example.com/2024/09/05/萱仔求职系列——3.1_力扣面试150题目——数组&字符串第一弹/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://blog.csdn.net/qq_44117805?" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://blog.csdn.net/qq_44117805?" target="_blank"><span class="text-dark">萱仔</span><small class="ml-1x">萱仔的自我学习记录，冲冲冲！</small></a></h3>
+        <div>个人简介</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%942.1_python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="萱仔求职系列——2.1_python基础知识复习——数据类型+数据结构.html"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2024/09/04/%E6%97%A7%E9%A1%B9%E7%9B%AE%E6%96%B0%E5%AD%A6%E4%B9%A0-%E5%A4%A9%E6%B1%A0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8NLP_-_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB_-_BERT%E7%AE%97%E6%B3%95%E5%A4%84%E7%90%86/" title="旧项目新学习-天池-零基础入门NLP_-_新闻文本分类_-_BERT算法处理.html"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

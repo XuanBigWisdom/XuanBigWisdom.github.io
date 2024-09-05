@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo 博客中如何插入多种内容 | 萱仔的学习小屋</title>
+  <meta name="description" content="这篇文章展示了如何在 Hexo 博客中插入图片、表格、代码块、正文内容以及三级标题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 博客中如何插入多种内容">
+<meta property="og:url" content="http://example.com/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%92%8C%E5%B8%B8%E7%94%A8%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="萱仔的学习小屋">
+<meta property="og:description" content="这篇文章展示了如何在 Hexo 博客中插入图片、表格、代码块、正文内容以及三级标题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-02T06:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-05T16:54:03.513Z">
+<meta property="article:author" content="xuanzaismart">
+<meta property="article:tag" content="Hexo, 教程">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%92%8C%E5%B8%B8%E7%94%A8%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/index.html">
+  
+    <link rel="alternate" href="[object Object]" title="萱仔的学习小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://blog.csdn.net/qq_44117805?" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">萱仔</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">萱仔的自我学习记录，冲冲冲！</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hebei, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>不问收获，但问耕耘！冲冲冲，萱仔的自我学习记录博客，恭喜自己重新在github搭建个人博客，前面内容逐渐搬运到新博客之后和原CSDN博客同时更新，<br>CSDN网址：<a href="https://blog.csdn.net/qq_44117805?type=blog" target="_blank">https://blog.csdn.net/qq_44117805?type=blog</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">大模型学习记录</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/Python/">Python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-%E6%95%99%E7%A8%8B/" rel="tag">Hexo, 教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" rel="tag">常用库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-nlp/" rel="tag">技术, nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Anaconda/" style="font-size: 13px;">Anaconda</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/Hexo-%E6%95%99%E7%A8%8B/" style="font-size: 13.5px;">Hexo, 教程</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" style="font-size: 13px;">常用库</a> <a href="/tags/%E6%8A%80%E6%9C%AF-nlp/" style="font-size: 13px;">技术, nlp</a> <a href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" style="font-size: 14px;">技术, 教程</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 13px;">教程</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a><span class="archive-list-count">18</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E6%97%A7%E4%BB%A3%E7%A0%81%E5%AD%A6%E4%B9%A0%E4%B8%8A%E4%BC%A0%E8%AE%B0%E5%BD%95-%E5%A4%A9%E6%B1%A0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8NLP_-_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" class="title">旧代码学习上传记录-天池-零基础入门NLP_-_新闻文本分类.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" class="title">萱仔求职系列——1.1_机器学习基础知识复习.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.2_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0+%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/" class="title">萱仔求职系列——1.2_机器学习基础知识复习+部分代码实战.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%942.1_python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="title">萱仔求职系列——2.1_python基础知识复习——数据类型+数据结构.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/" class="title">萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-推荐算法学习记录1——常用基础概念和常用推荐算法" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo 博客中如何插入多种内容
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%92%8C%E5%B8%B8%E7%94%A8%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/" class="article-date">
+	  <time datetime="2024-09-02T06:00:00.000Z" itemprop="datePublished">2024-09-02</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Hexo-%E6%95%99%E7%A8%8B/" rel="tag">Hexo, 教程</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%92%8C%E5%B8%B8%E7%94%A8%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p> 最近买了一本异步图书的推荐算法书，对推荐算法产生了兴趣，记录一下自己学习的过程。本人学习的第一步是，了解常用的推荐算法。</p>
+<h1 id="推荐系统的常用基础概念详解："><a href="#推荐系统的常用基础概念详解：" class="headerlink" title="推荐系统的常用基础概念详解："></a>推荐系统的常用基础概念详解：</h1><h3 id="1-数据收集与处理"><a href="#1-数据收集与处理" class="headerlink" title="1. 数据收集与处理"></a>1. 数据收集与处理</h3><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><ul>
+<li>用户行为数据：记录用户的操作和行为，如点击、浏览、购买、评分等。这些数据用于理解用户的兴趣和偏好。</li>
+<li>用户特征数据：包括用户的个人信息，如年龄、性别、地理位置、职业等。这些信息可以帮助理解用户的背景和兴趣。</li>
+<li>物品特征数据：描述物品的属性，如电影的导演、演员、类型，商品的品牌、价格、类别等。这些特征用于对物品进行分类和推荐。</li>
+</ul>
+<h4 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h4><p> 数据清洗是准备数据的重要步骤，包括：</p>
+<ul>
+<li>去除重复数据：确保每条记录唯一。</li>
+<li>处理缺失值：填补或删除缺失的数据。</li>
+<li>数据标准化：将数据转换为统一的格式，如将日期格式统一，数值范围归一化等。</li>
+</ul>
+<h4 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h4><p> 特征提取从原始数据中提取有用的信息，用于建模和分析。常见的特征提取方法包括：</p>
+<ul>
+<li>TF-IDF：用于文本数据，将词汇转换为特征。</li>
+<li>特征工程：从用户行为数据中提取用户的兴趣特征，如用户对某一类物品的偏好。</li>
+</ul>
+<h3 id="2-用户建模与物品建模"><a href="#2-用户建模与物品建模" class="headerlink" title="2. 用户建模与物品建模"></a>2. 用户建模与物品建模</h3><h4 id="用户建模"><a href="#用户建模" class="headerlink" title="用户建模"></a>用户建模</h4><p> 用户建模是为了理解用户的兴趣和需求。常见的用户建模方法包括：</p>
+<ul>
+<li>用户画像：构建用户的详细画像，包括用户的基本信息、历史行为、兴趣爱好等。</li>
+<li>兴趣建模：基于用户的历史行为预测用户对未来物品的兴趣。</li>
+</ul>
+<h4 id="物品建模"><a href="#物品建模" class="headerlink" title="物品建模"></a>物品建模</h4><p> 物品建模是为了理解物品的特征和类别。常见的物品建模方法包括：</p>
+<ul>
+<li>物品特征建模：利用物品的属性和特征来描述和分类物品。</li>
+<li>物品嵌入：将物品映射到低维空间中，用于捕捉物品之间的潜在关系。</li>
+</ul>
+<h3 id="3-推荐系统架构"><a href="#3-推荐系统架构" class="headerlink" title="3. 推荐系统架构"></a>3. 推荐系统架构</h3><h4 id="数据存储与管理"><a href="#数据存储与管理" class="headerlink" title="数据存储与管理"></a>数据存储与管理</h4><p> 推荐系统需要处理大量的用户和物品数据，常用的数据存储技术包括：</p>
+<ul>
+<li>关系型数据库：如MySQL、PostgreSQL，用于存储结构化数据。</li>
+<li>NoSQL数据库：如MongoDB、Cassandra，用于处理非结构化数据和大规模数据存储。</li>
+<li>分布式文件系统：如Hadoop HDFS，用于处理大规模数据集。</li>
+</ul>
+<h4 id="实时推荐与离线推荐"><a href="#实时推荐与离线推荐" class="headerlink" title="实时推荐与离线推荐"></a>实时推荐与离线推荐</h4><ul>
+<li>实时推荐：在用户进行操作时，系统即时生成推荐结果，通常需要高效的数据处理和计算能力。</li>
+<li>离线推荐：在非实时的情况下对用户和物品进行分析和推荐，适合用于大规模的数据分析和模型训练。</li>
+</ul>
+<h4 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h4><p> 推荐系统的架构包括前端用户接口、后端推荐引擎和数据存储。系统架构设计需要考虑高并发、数据一致性、系统扩展性等因素。</p>
+<h3 id="4-推荐系统的性能评估"><a href="#4-推荐系统的性能评估" class="headerlink" title="4. 推荐系统的性能评估"></a>4. 推荐系统的性能评估</h3><h4 id="评估指标"><a href="#评估指标" class="headerlink" title="评估指标"></a>评估指标</h4><p> 推荐系统的性能评估包括多个方面，常用的评估指标有：</p>
+<ul>
+<li>准确率（Precision）：推荐结果中实际相关物品的比例。</li>
+<li>召回率（Recall）：推荐系统找到的相关物品占所有相关物品的比例。</li>
+<li>F1值：准确率和召回率的调和平均值。</li>
+<li>均方根误差（RMSE）：预测评分与实际评分的差异的平方根，用于评价预测的准确性。</li>
+<li>覆盖率（Coverage）：推荐系统能够覆盖的物品比例。</li>
+<li>新颖性（Novelty）：推荐结果的新颖程度，即推荐物品的独特性和新颖性。</li>
+</ul>
+<h4 id="A-B测试"><a href="#A-B测试" class="headerlink" title="A&#x2F;B测试"></a>A&#x2F;B测试</h4><p> A&#x2F;B测试是一种常用的实验方法，用于评估不同推荐算法或策略的效果。通过将用户分为两个组，分别使用不同的推荐策略，比较它们的效果来选择最佳方案。</p>
+<h3 id="5-用户体验与伦理问题"><a href="#5-用户体验与伦理问题" class="headerlink" title="5. 用户体验与伦理问题"></a>5. 用户体验与伦理问题</h3><h4 id="用户体验"><a href="#用户体验" class="headerlink" title="用户体验"></a>用户体验</h4><p> 用户体验是推荐系统设计的重要方面，包括：</p>
+<ul>
+<li>推荐的相关性：推荐结果是否符合用户的兴趣和需求。</li>
+<li>推荐的多样性：推荐结果是否具有足够的多样性，避免推荐结果过于单一。</li>
+<li>推荐的透明性：用户是否能够理解推荐的理由和过程。</li>
+</ul>
+<h4 id="伦理问题"><a href="#伦理问题" class="headerlink" title="伦理问题"></a>伦理问题</h4><p> 推荐系统在处理用户数据时需要考虑伦理问题，包括：</p>
+<ul>
+<li>隐私保护：保护用户的个人隐私，确保数据的安全性和机密性。</li>
+<li>公平性：避免算法偏见，确保推荐结果对所有用户公平。</li>
+<li>透明性：让用户了解数据的使用和推荐算法的工作原理。</li>
+</ul>
+<h3 id="6-未来发展趋势"><a href="#6-未来发展趋势" class="headerlink" title="6. 未来发展趋势"></a>6. 未来发展趋势</h3><p> 推荐系统技术不断进步，未来的发展趋势包括：</p>
+<ul>
+<li>深度学习和人工智能：利用更先进的深度学习技术，提高推荐系统的准确性和个性化水平。</li>
+<li>跨域推荐：在不同领域之间进行推荐，如从电商推荐到音乐推荐。</li>
+<li>个性化推荐：根据用户的实时行为和上下文进行更个性化的推荐。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p> 推荐系统不仅涉及复杂的算法和模型，还包括数据处理、系统架构、性能评估、用户体验和伦理问题等多个方面。了解这些基础概念有助于全面理解推荐系统的设计和实现，提升系统的效果和用户满意度。</p>
+<p> -----------------------------------------------------------------------------------------------------------------------</p>
+<p> 推荐系统可以帮助我们发现可能感兴趣的产品或信息方面。如果我们在网购的时候，推荐系统会根据浏览和购买记录，向我们推荐可能会喜欢的其他商品。以下是一些常用的推荐算法，以及它们的工作原理和优缺点：</p>
+<h1 id="常用的推荐算法详解："><a href="#常用的推荐算法详解：" class="headerlink" title="常用的推荐算法详解："></a>常用的推荐算法详解：</h1><h3 id="1-协同过滤（Collaborative-Filtering）"><a href="#1-协同过滤（Collaborative-Filtering）" class="headerlink" title="1. 协同过滤（Collaborative Filtering）"></a>1. 协同过滤（Collaborative Filtering）</h3><h4 id="用户基于协同过滤（User-Based-Collaborative-Filtering）"><a href="#用户基于协同过滤（User-Based-Collaborative-Filtering）" class="headerlink" title="用户基于协同过滤（User-Based Collaborative Filtering）"></a>用户基于协同过滤（User-Based Collaborative Filtering）</h4><p> 用户基于协同过滤算法会基于用户之间的相似性为用户推荐物品。具体来说，这种算法会找出与目标用户兴趣相似的其他用户，然后推荐那些用户喜欢的物品。例如，如果用户A和用户B有相似的购物记录，且用户B买了一本书但用户A还没有买，这个算法可能会推荐这本书给用户A。</p>
+<p> 优点：</p>
+<ul>
+<li>简单易实现。</li>
+<li>能够推荐用户未曾接触过的物品。</li>
+</ul>
+<p> 缺点：</p>
+<ul>
+<li>对新用户或新物品不友好（冷启动问题）。</li>
+<li>当数据稀疏时，推荐效果可能不佳。</li>
+</ul>
+<h4 id="步骤如下："><a href="#步骤如下：" class="headerlink" title="步骤如下："></a>步骤如下：</h4><ul>
+<li>计算用户之间的相似度（常用余弦相似度）。</li>
+<li>找到与目标用户最相似的用户。</li>
+<li>根据相似用户的偏好推荐物品。</li>
+</ul>
+<h4 id="代码demo"><a href="#代码demo" class="headerlink" title="代码demo"></a>代码demo</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">from sklearn.metrics.pairwise import cosine_similarity</span><br><span class="line"></span><br><span class="line"># 用户-物品评分矩阵</span><br><span class="line">data = &#123;&#x27;user&#x27;: [1, 1, 1, 2, 2, 3, 3, 4, 4, 4],</span><br><span class="line">        &#x27;item&#x27;: [&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;A&#x27;, &#x27;C&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;],</span><br><span class="line">        &#x27;rating&#x27;: [5, 4, 3, 4, 2, 5, 3, 2, 4, 5]&#125;</span><br><span class="line">df = pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line"># 创建用户-物品矩阵</span><br><span class="line">user_item_matrix = df.pivot(index=&#x27;user&#x27;, columns=&#x27;item&#x27;, values=&#x27;rating&#x27;).fillna(0)</span><br><span class="line"></span><br><span class="line"># 计算用户相似度</span><br><span class="line">user_similarity = cosine_similarity(user_item_matrix)</span><br><span class="line">user_similarity_df = pd.DataFrame(user_similarity, index=user_item_matrix.index, columns=user_item_matrix.index)</span><br><span class="line"></span><br><span class="line"># 为用户1推荐物品</span><br><span class="line">user_id = 1</span><br><span class="line">similar_users = user_similarity_df[user_id].sort_values(ascending=False).index[1:]</span><br><span class="line"></span><br><span class="line"># 获取相似用户评分</span><br><span class="line">recommendations = user_item_matrix.loc[similar_users].mean().sort_values(ascending=False)</span><br><span class="line">print(recommendations)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="物品基于协同过滤（Item-Based-Collaborative-Filtering）"><a href="#物品基于协同过滤（Item-Based-Collaborative-Filtering）" class="headerlink" title="物品基于协同过滤（Item-Based Collaborative Filtering）"></a>物品基于协同过滤（Item-Based Collaborative Filtering）</h4><p> 物品基于协同过滤算法会基于物品之间的相似性为用户推荐物品。具体来说，这种算法会分析用户之前喜欢的物品，然后推荐与这些物品相似的新物品。例如，如果你买了几本关于机器学习的书，系统可能会推荐更多关于机器学习的书给你。</p>
+<p> 优点：</p>
+<ul>
+<li>稳定性较高，推荐结果不会因为单个用户的行为变化而有太大波动。</li>
+<li>能处理大量用户的情况下仍然有效。</li>
+</ul>
+<p> 缺点：</p>
+<ul>
+<li>需要计算大量物品之间的相似度，计算量大。</li>
+<li>对于冷启动问题仍然存在一定影响。</li>
+</ul>
+<p> 步骤如下：</p>
+<ul>
+<li>计算物品之间的相似度（常用余弦相似度）。</li>
+<li>找到与用户喜欢的物品相似的物品。</li>
+<li>推荐这些相似物品。</li>
+</ul>
+<p> 代码demo：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">from sklearn.metrics.pairwise import cosine_similarity</span><br><span class="line"></span><br><span class="line"># 用户-物品评分矩阵</span><br><span class="line">data = &#123;&#x27;user&#x27;: [1, 1, 1, 2, 2, 3, 3, 4, 4, 4],</span><br><span class="line">        &#x27;item&#x27;: [&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;A&#x27;, &#x27;C&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;],</span><br><span class="line">        &#x27;rating&#x27;: [5, 4, 3, 4, 2, 5, 3, 2, 4, 5]&#125;</span><br><span class="line">df = pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line"># 创建用户-物品矩阵</span><br><span class="line">user_item_matrix = df.pivot(index=&#x27;user&#x27;, columns=&#x27;item&#x27;, values=&#x27;rating&#x27;).fillna(0)</span><br><span class="line"></span><br><span class="line"># 计算物品相似度</span><br><span class="line">item_similarity = cosine_similarity(user_item_matrix.T)</span><br><span class="line">item_similarity_df = pd.DataFrame(item_similarity, index=user_item_matrix.columns, columns=user_item_matrix.columns)</span><br><span class="line"></span><br><span class="line"># 为用户1推荐物品</span><br><span class="line">user_id = 1</span><br><span class="line">user_ratings = user_item_matrix.loc[user_id]</span><br><span class="line"></span><br><span class="line"># 计算推荐得分</span><br><span class="line">recommendations = user_ratings.dot(item_similarity_df).sort_values(ascending=False)</span><br><span class="line">print(recommendations)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-基于内容的推荐（Content-Based-Filtering）"><a href="#2-基于内容的推荐（Content-Based-Filtering）" class="headerlink" title="2. 基于内容的推荐（Content-Based Filtering）"></a>2. 基于内容的推荐（Content-Based Filtering）</h3><p> 基于内容的推荐算法会根据用户之前喜欢的内容的特征和属性，推荐具有相似特征的新内容。这种方法依赖于物品的元数据，如电影的导演、演员列表或文章的关键词。例如，如果你喜欢某一类型的电影，系统会推荐更多同类型的电影。</p>
+<p> 优点：</p>
+<ul>
+<li>能够处理冷启动问题，特别是新物品。</li>
+<li>推荐结果可以解释，因为可以展示推荐理由（例如“你喜欢A，所以我们推荐B，因为它们有相似的特征”）。</li>
+</ul>
+<p> 缺点：</p>
+<ul>
+<li>推荐的多样性可能不足，因为只推荐与用户已有兴趣相似的物品。</li>
+<li>需要大量的物品特征信息。</li>
+</ul>
+<p> 步骤如下：</p>
+<ul>
+<li>将用户-物品交互矩阵分解为用户矩阵和物品矩阵。</li>
+<li>利用分解后的矩阵预测用户对未评分物品的偏好。</li>
+<li>推荐得分最高的物品。</li>
+</ul>
+<p> 代码demo：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from sklearn.feature_extraction.text import TfidfVectorizer</span><br><span class="line"></span><br><span class="line"># 示例数据：电影和它们的特征</span><br><span class="line">movies = &#123;&#x27;title&#x27;: [&#x27;Movie1&#x27;, &#x27;Movie2&#x27;, &#x27;Movie3&#x27;],</span><br><span class="line">          &#x27;features&#x27;: [&#x27;action adventure&#x27;, &#x27;romance drama&#x27;, &#x27;action thriller&#x27;]&#125;</span><br><span class="line">movies_df = pd.DataFrame(movies)</span><br><span class="line"></span><br><span class="line"># 用户的历史偏好</span><br><span class="line">user_history = &#x27;action adventure&#x27;</span><br><span class="line"></span><br><span class="line"># 计算TF-IDF矩阵</span><br><span class="line">vectorizer = TfidfVectorizer()</span><br><span class="line">tfidf_matrix = vectorizer.fit_transform(movies_df[&#x27;features&#x27;])</span><br><span class="line"></span><br><span class="line"># 计算用户历史偏好和电影特征的相似度</span><br><span class="line">user_tfidf = vectorizer.transform([user_history])</span><br><span class="line">cosine_similarities = cosine_similarity(user_tfidf, tfidf_matrix).flatten()</span><br><span class="line"></span><br><span class="line"># 排序并推荐</span><br><span class="line">recommendations = movies_df.iloc[np.argsort(cosine_similarities)[::-1]]</span><br><span class="line">print(recommendations)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-矩阵分解（Matrix-Factorization）"><a href="#3-矩阵分解（Matrix-Factorization）" class="headerlink" title="3. 矩阵分解（Matrix Factorization）"></a>3. 矩阵分解（Matrix Factorization）</h3><p> 矩阵分解算法如奇异值分解（SVD）和交替最小二乘法（ALS）通过分解用户-物品交互矩阵，找到潜在的因子来预测用户对未评分物品的偏好。这个方法能够揭示用户和物品之间的隐含关系，从而提高推荐的准确性。</p>
+<p> 优点：</p>
+<ul>
+<li>能够处理大规模数据。</li>
+<li>可以发现用户和物品之间的隐含关系，推荐效果好。</li>
+</ul>
+<p> 缺点：</p>
+<ul>
+<li>对于冷启动问题仍然存在一定影响。</li>
+<li>需要一定的计算资源和时间来训练模型。</li>
+</ul>
+<p> 步骤如下：</p>
+<ul>
+<li>将用户-物品交互矩阵分解为用户矩阵和物品矩阵。</li>
+<li>利用分解后的矩阵预测用户对未评分物品的偏好。</li>
+<li>推荐得分最高的物品。</li>
+</ul>
+<p> 代码demo：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from surprise import SVD, Dataset, Reader</span><br><span class="line">from surprise.model_selection import train_test_split</span><br><span class="line">from surprise import accuracy</span><br><span class="line"></span><br><span class="line"># 示例数据</span><br><span class="line">data = Dataset.load_from_df(df[[&#x27;user&#x27;, &#x27;item&#x27;, &#x27;rating&#x27;]], Reader(rating_scale=(1, 5)))</span><br><span class="line"></span><br><span class="line"># 训练SVD模型</span><br><span class="line">trainset, testset = train_test_split(data, test_size=0.25)</span><br><span class="line">algo = SVD()</span><br><span class="line">algo.fit(trainset)</span><br><span class="line"></span><br><span class="line"># 预测并计算准确度</span><br><span class="line">predictions = algo.test(testset)</span><br><span class="line">print(&#x27;RMSE:&#x27;, accuracy.rmse(predictions))</span><br><span class="line"></span><br><span class="line"># 为用户1推荐物品</span><br><span class="line">user_id = 1</span><br><span class="line">items = df[&#x27;item&#x27;].unique()</span><br><span class="line">user_ratings = &#123;item: algo.predict(user_id, item).est for item in items&#125;</span><br><span class="line">recommendations = pd.Series(user_ratings).sort_values(ascending=False)</span><br><span class="line">print(recommendations)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-深度学习方法"><a href="#4-深度学习方法" class="headerlink" title="4. 深度学习方法"></a>4. 深度学习方法</h3><p> 深度学习方法利用神经网络进行特征学习和推荐，如使用自编码器、卷积神经网络（CNNs）、循环神经网络（RNNs）和最近的注意力机制和Transformer模型。深度学习方法可以从复杂的数据中学习到深层的特征表示，提高推荐的准确性和个性化水平。</p>
+<p> 优点：</p>
+<ul>
+<li>能够处理复杂和大规模的数据。</li>
+<li>推荐效果好，能够学习到深层次的特征。</li>
+</ul>
+<p> 缺点：</p>
+<ul>
+<li>需要大量的计算资源和数据。</li>
+<li>训练和调参较为复杂。、</li>
+</ul>
+<p> 步骤如下：</p>
+<ul>
+<li>构建神经网络模型。</li>
+<li>利用历史数据训练模型。</li>
+<li>使用训练好的模型进行推荐。</li>
+</ul>
+<p> 代码demo：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import tensorflow as tf</span><br><span class="line">from tensorflow.keras.layers import Input, Dense, Embedding, Flatten, Concatenate</span><br><span class="line">from tensorflow.keras.models import Model</span><br><span class="line"></span><br><span class="line"># 构建示例数据</span><br><span class="line">num_users = 10</span><br><span class="line">num_items = 20</span><br><span class="line">ratings = np.random.randint(1, 6, size=(100, 3))</span><br><span class="line"></span><br><span class="line"># 构建模型</span><br><span class="line">user_input = Input(shape=(1,))</span><br><span class="line">item_input = Input(shape=(1,))</span><br><span class="line">user_embedding = Embedding(input_dim=num_users, output_dim=10)(user_input)</span><br><span class="line">item_embedding = Embedding(input_dim=num_items, output_dim=10)(item_input)</span><br><span class="line">user_vector = Flatten()(user_embedding)</span><br><span class="line">item_vector = Flatten()(item_embedding)</span><br><span class="line">concatenated = Concatenate()([user_vector, item_vector])</span><br><span class="line">dense = Dense(128, activation=&#x27;relu&#x27;)(concatenated)</span><br><span class="line">output = Dense(1)(dense)</span><br><span class="line"></span><br><span class="line">model = Model([user_input, item_input], output)</span><br><span class="line">model.compile(optimizer=&#x27;adam&#x27;, loss=&#x27;mean_squared_error&#x27;)</span><br><span class="line"></span><br><span class="line"># 训练模型</span><br><span class="line">model.fit([ratings[:, 0], ratings[:, 1]], ratings[:, 2], epochs=10, batch_size=32)</span><br><span class="line"></span><br><span class="line"># 为用户1推荐物品</span><br><span class="line">user_id = 1</span><br><span class="line">user_vector = np.array([user_id] * num_items)</span><br><span class="line">item_vector = np.array(range(num_items))</span><br><span class="line">predictions = model.predict([user_vector, item_vector])</span><br><span class="line">recommendations = pd.Series(predictions.flatten(), index=item_vector).sort_values(ascending=False)</span><br><span class="line">print(recommendations)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-混合推荐系统（Hybrid-Recommender-Systems）"><a href="#5-混合推荐系统（Hybrid-Recommender-Systems）" class="headerlink" title="5. 混合推荐系统（Hybrid Recommender Systems）"></a>5. 混合推荐系统（Hybrid Recommender Systems）</h3><p> 混合推荐系统结合了以上一个或多个推荐技术的方法，比如将内容推荐和协同过滤结合起来，以利用各自的优势并克服单一方法的限制。混合方法可以提高推荐系统的准确性和覆盖面。</p>
+<p> 优点：</p>
+<ul>
+<li>综合了多种方法的优点，推荐效果更好。</li>
+<li>能够处理单一方法无法解决的问题，如冷启动和数据稀疏问题。</li>
+</ul>
+<p> 缺点：</p>
+<ul>
+<li>实现复杂度较高。</li>
+<li>需要综合考虑多种方法的优缺点，调参难度较大。</li>
+</ul>
+<p> 这些算法可以根据具体的应用场景和需求单独使用，也可以结合使用来构建更复杂的推荐系统。选择合适的推荐算法取决于可用的数据类型、系统的目标以及用户的期望等因素。</p>
+<p> 步骤如下：</p>
+<ul>
+<li>选择合适的单一推荐算法并训练模型。</li>
+<li>将多个模型的推荐结果结合起来。</li>
+<li>利用综合推荐结果进行推荐。</li>
+</ul>
+<p> 代码demo：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 结合协同过滤和基于内容的推荐</span><br><span class="line">user_based_recommendations = user_item_matrix.loc[similar_users].mean()</span><br><span class="line">content_based_recommendations = pd.Series(cosine_similarities, index=movies_df[&#x27;title&#x27;])</span><br><span class="line"></span><br><span class="line"># 混合推荐（简单加权平均）</span><br><span class="line">combined_recommendations = (user_based_recommendations + content_based_recommendations) / 2</span><br><span class="line">print(combined_recommendations.sort_values(ascending=False))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p> 推荐系统在现代互联网应用中发挥着至关重要的作用，从在线购物到音乐推荐，再到新闻推送，几乎无处不在。通过了解不同推荐算法的工作原理和特点，我们可以更好地设计和优化推荐系统，为用户提供更精准和个性化的推荐服务。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%92%8C%E5%B8%B8%E7%94%A8%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/" title="Hexo 博客中如何插入多种内容" target="_blank" rel="external">http://example.com/2024/09/02/推荐算法学习记录1——常用基础概念和常用推荐算法/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://blog.csdn.net/qq_44117805?" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://blog.csdn.net/qq_44117805?" target="_blank"><span class="text-dark">萱仔</span><small class="ml-1x">萱仔的自我学习记录，冲冲冲！</small></a></h3>
+        <div>个人简介</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/09/02/leecode150-%E8%90%B1%E4%BB%94%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0%E8%AE%B0%E5%BD%951-%E6%95%B0%E7%BB%84/" title="Hexo 博客中如何插入多种内容"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.1%E2%80%94%E2%80%94kaggle%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%8A%A8%E6%BC%AB%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D/" title="Hexo 博客中如何插入多种内容"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>萱仔大模型学习记录2.1-BERT算法论文和实践.html | 萱仔的学习小屋</title>
+  <meta name="description" content="进行大模型的学习记录，包括了大模型原理，nlp常用的bert算法和transform学习，一些项目的代码和langchain等框架的入门学习过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="萱仔大模型学习记录2.1-BERT算法论文和实践.html">
+<meta property="og:url" content="http://example.com/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.1-BERT%E7%AE%97%E6%B3%95%E8%AE%BA%E6%96%87%E5%92%8C%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="萱仔的学习小屋">
+<meta property="og:description" content="进行大模型的学习记录，包括了大模型原理，nlp常用的bert算法和transform学习，一些项目的代码和langchain等框架的入门学习过程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/4141fe1334de4b8f99a1b9a1005f0d7c.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/aced1a053a0c4183b9e76218ae92a271.png">
+<meta property="article:published_time" content="2024-09-04T06:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-05T16:58:12.479Z">
+<meta property="article:author" content="xuanzaismart">
+<meta property="article:tag" content="技术, 教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/4141fe1334de4b8f99a1b9a1005f0d7c.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.1-BERT%E7%AE%97%E6%B3%95%E8%AE%BA%E6%96%87%E5%92%8C%E5%AE%9E%E8%B7%B5/index.html">
+  
+    <link rel="alternate" href="[object Object]" title="萱仔的学习小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://blog.csdn.net/qq_44117805?" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">萱仔</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">萱仔的自我学习记录，冲冲冲！</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hebei, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>不问收获，但问耕耘！冲冲冲，萱仔的自我学习记录博客，恭喜自己重新在github搭建个人博客，前面内容逐渐搬运到新博客之后和原CSDN博客同时更新，<br>CSDN网址：<a href="https://blog.csdn.net/qq_44117805?type=blog" target="_blank">https://blog.csdn.net/qq_44117805?type=blog</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">大模型学习记录</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/Python/">Python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-%E6%95%99%E7%A8%8B/" rel="tag">Hexo, 教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" rel="tag">常用库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-nlp/" rel="tag">技术, nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Anaconda/" style="font-size: 13px;">Anaconda</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/Hexo-%E6%95%99%E7%A8%8B/" style="font-size: 13.5px;">Hexo, 教程</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" style="font-size: 13px;">常用库</a> <a href="/tags/%E6%8A%80%E6%9C%AF-nlp/" style="font-size: 13px;">技术, nlp</a> <a href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" style="font-size: 14px;">技术, 教程</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 13px;">教程</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a><span class="archive-list-count">18</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E6%97%A7%E4%BB%A3%E7%A0%81%E5%AD%A6%E4%B9%A0%E4%B8%8A%E4%BC%A0%E8%AE%B0%E5%BD%95-%E5%A4%A9%E6%B1%A0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8NLP_-_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" class="title">旧代码学习上传记录-天池-零基础入门NLP_-_新闻文本分类.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" class="title">萱仔求职系列——1.1_机器学习基础知识复习.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.2_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0+%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/" class="title">萱仔求职系列——1.2_机器学习基础知识复习+部分代码实战.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%942.1_python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="title">萱仔求职系列——2.1_python基础知识复习——数据类型+数据结构.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/" class="title">萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-萱仔大模型学习记录2.1-BERT算法论文和实践" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      萱仔大模型学习记录2.1-BERT算法论文和实践.html
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.1-BERT%E7%AE%97%E6%B3%95%E8%AE%BA%E6%96%87%E5%92%8C%E5%AE%9E%E8%B7%B5/" class="article-date">
+	  <time datetime="2024-09-04T06:00:00.000Z" itemprop="datePublished">2024-09-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">大模型学习记录</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.1-BERT%E7%AE%97%E6%B3%95%E8%AE%BA%E6%96%87%E5%92%8C%E5%AE%9E%E8%B7%B5/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p> 第二章的内容承接上一章的内容，主要对nlp的模型bert论文进行学习和分析，虽然以前的项目中已经使用过bert进行新闻文本分类，但我个人认为我自己还是对理论和论文分析的不够到尾，需要对论文的理论进行仔细的学习，这样才能应对未来的魔改操作。这里我学习bert算法以及对应的transform结构</p>
+<p> 1.bert原论文——</p>
+<p> BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</p>
+<p> 论文网址：<br> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1810.04805" title="https://arxiv.org/pdf/1810.04805">https://arxiv.org/pdf/1810.04805</a> </p>
+<p> 代码网址： <a target="_blank" rel="noopener" href="https://github.com/google/-research/bert%EF%BC%88%E8%AE%BA%E6%96%87%E5%86%85%E4%BB%A3%E7%A0%81%E7%BD%91%E5%9D%80%EF%BC%89">https://github.com/google\-research/bert（论文内代码网址）</a></p>
+<p> 2.transform原论文——</p>
+<p> Attention Is All You Need</p>
+<p> 论文网址：<br> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762" title="https://arxiv.org/pdf/1706.03762">https://arxiv.org/pdf/1706.03762</a> </p>
+<p> 代码网址：</p>
+<p> ---------------------------------------------------------------------------------------------------------------</p>
+<h2 id="BERT："><a href="#BERT：" class="headerlink" title="BERT："></a>BERT：</h2><h3 id="1-摘要"><a href="#1-摘要" class="headerlink" title="1.摘要"></a>1.摘要</h3><p> 我们介绍了一种新的语言表示模型，名为BERT，全称是双向编码器表示的Transformer。与最近的语言表示模型（如Peters等人，2018；Radford等人，2018）不同，BERT被设计为从无标签文本中预训练深度双向表示，它通过在所有层中同时考虑左右上下文来实现这一点。因此，预训练后的BERT模型只需在其基础上添加一个额外的输出层，就可以针对各种任务（如问答和语言推理）创建最先进的模型，而无需进行大幅度的任务特定架构修改。</p>
+<p> BERT在概念上简单但在实验中却非常强大。它在十一项自然语言处理任务上获得了新的最先进结果，包括将GLUE基准得分提高到80.5%（绝对提升7.7个百分点）、MultiNLI准确率提高到86.7%（绝对提升4.6个百分点）、SQuAD v1.1问答测试的F1得分提高到93.2（绝对提升1.5个百分点）以及SQuAD v2.0测试的F1得分提高到83.1（绝对提升5.1个百分点）。</p>
+<h3 id="2-引言"><a href="#2-引言" class="headerlink" title="2.引言"></a>2.引言</h3><p> 在本文中，我们通过提出BERT（双向编码器表示的Transformer）改进了基于微调的方法。BERT通过使用“掩码语言模型”（MLM）预训练目标缓解了之前提到的单向性约束，这个目标受到了Cloze任务（Taylor，1953）的启发。掩码语言模型随机掩盖输入中的一些词，目标是仅基于其上下文预测被掩盖词的原始词汇ID。与从左到右的语言模型预训练不同，MLM目标使表示能够融合左右上下文，这使我们能够预训练一个深度双向的Transformer。除了掩码语言模型外，我们还使用了“下一个句子预测”任务，该任务共同预训练文本对的表示。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/4141fe1334de4b8f99a1b9a1005f0d7c.png"></p>
+<p> 与训练和微调都差不太多，除了输出层以外。相同的预训练模型参数用于初始化不同下游任务的模型。在微调期间，所有参数都将进行微调。[CLS]是在每个输入示例前添加的特殊符号，而[SEP]是特殊的分隔符（例如，分隔问题&#x2F;答案）。</p>
+<p> 可以看出来，前面已经解释了重点的贡献，和两种预训练微调的方法</p>
+<ul>
+<li><p><strong>预训练（Pre-training）</strong><br> ：</p>
+<ul>
+<li><strong>输入数据</strong><br>   ：大量的未标记文本。</li>
+<li><strong>架构</strong><br>   ：Transformer架构，使用注意力机制来处理文本序列。</li>
+<li><strong>预训练</strong><br>   ：<ul>
+<li><strong>掩码语言模型（Masked Language Model, MLM）</strong><br>   ：随机掩盖输入文本中的一些单词，模型的任务是根据上下文预测被掩盖的单词。</li>
+<li><strong>下一句预测（Next Sentence Prediction, NSP）</strong><br>   ：训练的模型需要判断两个句子是否是连续的。</li>
+</ul>
+</li>
+<li><strong>输出</strong><br>   ：预训练好的模型参数。</li>
+</ul>
+</li>
+<li><p><strong>微调（Fine-tuning）</strong><br> ：</p>
+<ul>
+<li><strong>输入数据</strong><br>   ：包含特定任务的标记数据（如问答数据、情感分析数据等）。</li>
+<li><strong>架构</strong><br>   ：与预训练时相同的Transformer架构。</li>
+<li><strong>微调过程</strong><br>   ：<ul>
+<li><strong>初始化</strong><br>   ：使用预训练好的模型参数初始化模型。</li>
+<li><strong>训练</strong><br>   ：在特定任务数据上进行训练，调整所有模型参数。</li>
+</ul>
+</li>
+<li><strong>输出</strong><br>   ：适应特定任务的模型。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments</span><br><span class="line">from datasets import load_dataset</span><br><span class="line">tokenizer = BertTokenizer.from_pretrained(&#x27;bert-base-uncased&#x27;) #随便选一个已经与训练好的模型</span><br><span class="line"></span><br><span class="line">dataset = load_dataset(&#x27;glue&#x27;, &#x27;mrpc&#x27;)</span><br><span class="line">def preprocess_function(examples):</span><br><span class="line">    return tokenizer(examples[&#x27;sentence1&#x27;], examples[&#x27;sentence2&#x27;], truncation=True, padding=&#x27;max_length&#x27;, max_length=128)</span><br><span class="line">encoded_dataset = dataset.map(preprocess_function, batched=True)</span><br><span class="line">model = BertForSequenceClassification.from_pretrained(&#x27;bert-base-uncased&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">training_args = TrainingArguments(</span><br><span class="line">    output_dir=&#x27;./results&#x27;,            </span><br><span class="line">    evaluation_strategy=&quot;epoch&quot;,       </span><br><span class="line">    per_device_train_batch_size=8,     </span><br><span class="line">    per_device_eval_batch_size=8,      </span><br><span class="line">    num_train_epochs=3,                </span><br><span class="line">    weight_decay=0.01,                 </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">trainer = Trainer(</span><br><span class="line">    model=model,                       </span><br><span class="line">    args=training_args,                </span><br><span class="line">    train_dataset=encoded_dataset[&#x27;train&#x27;],  </span><br><span class="line">    eval_dataset=encoded_dataset[&#x27;validation&#x27;], </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">trainer.train()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>导入transformers库中的BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments模块，以及datasets库。</li>
+<li>定义训练参数，包括输出目录、评估策略、每个设备的训练和评估批次大小、训练轮数和权重衰减。</li>
+</ul>
+<p> BERT的模型架构是基于Vaswani等人（2017年）提出的原始实现和tensor2tensor库发布的多层双向Transformer编码器。bert几乎和原始版本相同，因此我们不再详细介绍模型架构的背景，建议读者参考Vaswani等人的论文和一些优秀的指南，比如“注释版Transformer”。</p>
+<p> 代码地址如下（论文中的）：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tensorflow/tensor2tensor" title=" https://github.com/tensorflow/tensor2tensor">https://github.com/tensorflow/tensor2tensor</a> </p>
+<p> 其中层数用L表示，隐藏层大小用H表示，自注意力头的数量用A表示。论文里主要展示了两种模型大小的结果：BERTBASE（L=12, H=768, A=12，总参数=110M）和BERTLARGE（L=24, H=1024, A=16，总参数=340M）。选择BERTBASE是为了与OpenAI GPT在模型规模上进行对比。BERT Transformer使用的是双向自注意力，GPT Transformer使用的是单向自注意力，每个词元只能关注其左侧的上下文。</p>
+<p> bert的输入表示方法，能清晰地表示单个句子和成对的句子（例如问题和答案）。在论文的研究中，“句子”可以是任意一段连续的文字，而不一定是一个完整的语言句子。“序列”指的是输入给BERT的词序列，可以是一个句子或两个句子连在一起。</p>
+<p> 论文里使用WordPiece嵌入方法，这种方法将单词拆分成更小的词片，使用一个包含30,000个词片的词汇表。每个序列的第一个词片是一个特殊的分类词片（[CLS]）。这个词片的最终隐藏状态用于分类任务中，作为整个序列的代表。两个句子被打包在一个序列中。我们用两种方式区分这两个句子：首先，用一个特殊的分隔词片（[SEP]）将它们分开；其次，为每个词片添加一个标识，表明它属于句子A还是句子B。如图1所示，我们将输入嵌入表示为E，特殊[CLS]词片的最终隐藏向量表示为C ∈ RH，i个输入词片的最终隐藏向量表示为Ti ∈ RH。</p>
+<p> 对于每个词片，它的输入表示通过将对应的词片、段和位置嵌入相加得到。这个过程的可视化见图2。<br> <img src="https://i-blog.csdnimg.cn/direct/aced1a053a0c4183b9e76218ae92a271.png"></p>
+<h3 id="3-1-预训练-BERT（原文翻译）"><a href="#3-1-预训练-BERT（原文翻译）" class="headerlink" title="3.1 预训练 BERT（原文翻译）"></a>3.1 预训练 BERT（原文翻译）</h3><h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p> 不同于Peters等人（2018a）和Radford等人（2018），我们不使用传统的从左到右或从右到左的语言模型来预训练BERT。相反，我们使用两种无监督任务来预训练BERT。本节详细描述了这两种任务。这一步如图1的左半部分所示。</p>
+<h4 id="任务1：遮蔽语言模型-Masked-LM"><a href="#任务1：遮蔽语言模型-Masked-LM" class="headerlink" title="任务1：遮蔽语言模型 (Masked LM)"></a>任务1：遮蔽语言模型 (Masked LM)</h4><p> 直观上来看，一个深度的双向模型要比单向模型（无论是从左到右还是从右到左）或左右双向模型的浅层拼接更加强大。然而，标准的条件语言模型只能从左到右或从右到左进行训练，因为双向条件会导致每个词可以间接地“看到自己”，这样模型可以在多层上下文中轻松地预测目标词。</p>
+<p> 为了训练一个深度双向表示，我们简单地随机遮蔽输入词元中的一部分，然后预测那些被遮蔽的词元。我们将这个过程称为“遮蔽语言模型”（Masked LM, MLM），尽管在文献中它通常被称为Cloze任务（Taylor, 1953）。在这种情况下，与被遮蔽词元对应的最终隐藏向量会被输入到词汇表上的输出softmax中，就像标准的语言模型一样。在我们的所有实验中，我们随机遮蔽每个序列中15%的WordPiece词元。不同于降噪自编码器（Vincent等，2008），我们只预测被遮蔽的词而不是重建整个输入。</p>
+<p> 虽然这让我们获得了一个双向的预训练模型，但有一个缺点是，这在预训练和微调之间产生了不匹配，因为[MASK]词元在微调过程中不会出现。为了缓解这一问题，我们并不总是用实际的[MASK]词元替换“被遮蔽”的词。训练数据生成器随机选择15%的词元位置进行预测。如果选择了第i个词元，</p>
+<p><strong>我们会有80%的时间将其替换为[MASK]词元，10%的时间替换为一个随机词元，10%的时间保持第i个词元不变。然后，使用Ti来通过交叉熵损失预测原始词元。我们在附录C.2中比较了这种程序的变体。</strong> </p>
+<p><strong>这里个人理解意思是</strong> </p>
+<ul>
+<li>80％：用[MASK]词块替换单词：我是人——我是[MASK]</li>
+<li>10％：用随机词替换遮蔽词：我是人——我是狗</li>
+<li>10％：保持单词不变：我是人——我是人。#偏向于实际观察到的单词。</li>
+</ul>
+<h4 id="任务2：下一句预测-Next-Sentence-Prediction-NSP"><a href="#任务2：下一句预测-Next-Sentence-Prediction-NSP" class="headerlink" title="任务2：下一句预测 (Next Sentence Prediction, NSP)"></a>任务2：下一句预测 (Next Sentence Prediction, NSP)</h4><p> 许多重要的下游任务，如问答（QA）和自然语言推理（NLI），都基于理解两个句子之间的关系，而这种能力并不是直接通过语言建模捕捉到的。为了训练一个能够理解句子关系的模型，我们预训练了一个二元化的下一句预测任务，这个任务可以从任何单语语料库中轻松生成。具体来说，当为每个预训练样本选择句子A和B时，50%的时间B是实际紧随A之后的句子（标记为IsNext），50%的时间B是语料库中的一个随机句子（标记为NotNext）。如图1所示，我们使用C来进行下一句预测（NSP）。尽管这个任务很简单，但我们在第5.1节中展示了预训练这个任务对于QA和NLI任务是非常有益的。NSP任务与Jernite等人（2017）和Logeswaran与Lee（2018）使用的表示学习目标密切相关。然而，在之前的工作中，只有句子嵌入被转移到下游任务中，而在BERT中，所有参数都会被转移来初始化最终任务模型的参数。</p>
+<p> 很多重要的下游任务，例如问答(QA)和自然语言推理(NLI)，都是基于对两个文本句子间关系的理解，而这种关系并非通过<br> <strong>语言建模</strong><br> 直接获得。为了训练一个理解句子关系的模型，我们预训练了一个<br> <strong>二值化下一句预测任务</strong><br> ，该任务可以从任何单语语料库中轻松生成。具体来说，选择句子A和B作为预训练样本：B有50%的可能是A的下一句，也有50%的可能是来自语料库的随机句子。例如：</p>
+<ul>
+<li>50％：</li>
+</ul>
+<p> 输入=[CLS]我是[MASK][SEP]我喜欢吃[MASK][SEP]</p>
+<p> 其中MASK是“人”，“苹果”，这种情况，标记为IsNext</p>
+<ul>
+<li>50％：</li>
+</ul>
+<p> 输入=[CLS]我是[MASK][SEP]白色的[MASK]出去玩##ing[SEP]</p>
+<p> 其中MASK是“人”，“小狗”，这种情况，标记为NotNext</p>
+<h4 id="预训练数据"><a href="#预训练数据" class="headerlink" title="预训练数据"></a>预训练数据</h4><p> 预训练过程在很大程度上遵循了现有的语言模型预训练文献。我们使用BooksCorpus（800M词）和英文维基百科（2,500M词）作为预训练语料库。对于维基百科，我们只提取文本段落，忽略列表、表格和标题。使用文档级语料库而不是句子级语料库（如Billion Word Benchmark，Chelba等，2013）来提取长的连续序列是至关重要的。</p>
+<h3 id="3-2-微调"><a href="#3-2-微调" class="headerlink" title="3.2 微调"></a>3.2 微调</h3><p> 微调过程相对简单，因为Transformer中的自注意力机制允许BERT通过更换合适的输入和输出来处理多种下游任务，无论这些任务涉及单个文本还是文本对。对于涉及文本对的应用，一个常见的模式是先独立编码文本对，然后应用双向交叉注意力（例如Parikh等，2016；Seo等，2017）。而BERT则使用自注意力机制将这两个阶段统一起来，因为通过自注意力编码连接的文本对可以有效地在两个句子之间包含双向交叉注意力。</p>
+<p> 在微调BERT时，论文里将预训练好的模型应用到具体的任务上。BERT的自注意力机制让它能够处理多种任务，无论是单个文本还是文本对。对于文本对任务，传统的方法是先分别处理每个文本，再让它们相互注意；而BERT则直接将两个文本连接起来一起处理。</p>
+<p><strong>微调步骤</strong><br> ：</p>
+<ol>
+<li><strong>任务输入和输出</strong><br> ：根据具体任务，将输入和输出插入到BERT中。例如，在问答任务中，我们的输入是问题和相关段落，输出是问题的答案；在文本分类任务中，输入是文本，输出是分类结果。</li>
+<li><strong>模型微调</strong><br> ：微调所有模型参数，使其适应具体任务。这个过程相对简单且快速。</li>
+</ol>
+<p> 然后就是实验部分</p>
+<h3 id="4-实验"><a href="#4-实验" class="headerlink" title="4.实验"></a>4.实验</h3><p> （略过实验部分）</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.1-BERT%E7%AE%97%E6%B3%95%E8%AE%BA%E6%96%87%E5%92%8C%E5%AE%9E%E8%B7%B5/" title="萱仔大模型学习记录2.1-BERT算法论文和实践.html" target="_blank" rel="external">http://example.com/2024/09/04/萱仔大模型学习记录2.1-BERT算法论文和实践/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://blog.csdn.net/qq_44117805?" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://blog.csdn.net/qq_44117805?" target="_blank"><span class="text-dark">萱仔</span><small class="ml-1x">萱仔的自我学习记录，冲冲冲！</small></a></h3>
+        <div>个人简介</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951-%E4%BA%86%E8%A7%A3%E5%B8%B8%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/" title="萱仔大模型学习记录1-了解常用大模型.html"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953.1-BERT%E7%AE%97%E6%B3%95%E5%BE%AE%E8%B0%83%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/" title="萱仔大模型学习记录3.1-BERT算法微调理论和实践.html"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

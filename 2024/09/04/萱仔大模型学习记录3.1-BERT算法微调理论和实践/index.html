@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>萱仔大模型学习记录3.1-BERT算法微调理论和实践.html | 萱仔的学习小屋</title>
+  <meta name="description" content="进行大模型的学习记录，包括了大模型原理，nlp常用的bert算法和transform学习，一些项目的代码和langchain等框架的入门学习过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="萱仔大模型学习记录3.1-BERT算法微调理论和实践.html">
+<meta property="og:url" content="http://example.com/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953.1-BERT%E7%AE%97%E6%B3%95%E5%BE%AE%E8%B0%83%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="萱仔的学习小屋">
+<meta property="og:description" content="进行大模型的学习记录，包括了大模型原理，nlp常用的bert算法和transform学习，一些项目的代码和langchain等框架的入门学习过程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/e1d5b38eb06a4f768c5ff938460c916e.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/2d92899ee7a84a39adde6f5c78fe2774.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/114914e15ff04e27ba9563a006341084.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/c5d8676382404573b753bb40041f37f2.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/8df6229216104a4eb59bb043f15504b5.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/1138690bd4094dafb1da0f457527020a.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/cf962b8a7fed4bc79ae4cad274dd3082.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/5486ba8076c3498d855be2f8e24e9041.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/c3cfe3a208e64edba4882ef56b6d190e.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/9abcb625092842f2bcffd431b091ecc9.png">
+<meta property="article:published_time" content="2024-09-04T06:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-05T16:58:12.510Z">
+<meta property="article:author" content="xuanzaismart">
+<meta property="article:tag" content="技术, 教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/e1d5b38eb06a4f768c5ff938460c916e.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953.1-BERT%E7%AE%97%E6%B3%95%E5%BE%AE%E8%B0%83%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/index.html">
+  
+    <link rel="alternate" href="[object Object]" title="萱仔的学习小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://blog.csdn.net/qq_44117805?" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">萱仔</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">萱仔的自我学习记录，冲冲冲！</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hebei, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>不问收获，但问耕耘！冲冲冲，萱仔的自我学习记录博客，恭喜自己重新在github搭建个人博客，前面内容逐渐搬运到新博客之后和原CSDN博客同时更新，<br>CSDN网址：<a href="https://blog.csdn.net/qq_44117805?type=blog" target="_blank">https://blog.csdn.net/qq_44117805?type=blog</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">大模型学习记录</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/Python/">Python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-%E6%95%99%E7%A8%8B/" rel="tag">Hexo, 教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" rel="tag">常用库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-nlp/" rel="tag">技术, nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Anaconda/" style="font-size: 13px;">Anaconda</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/Hexo-%E6%95%99%E7%A8%8B/" style="font-size: 13.5px;">Hexo, 教程</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" style="font-size: 13px;">常用库</a> <a href="/tags/%E6%8A%80%E6%9C%AF-nlp/" style="font-size: 13px;">技术, nlp</a> <a href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" style="font-size: 14px;">技术, 教程</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 13px;">教程</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a><span class="archive-list-count">18</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E6%97%A7%E4%BB%A3%E7%A0%81%E5%AD%A6%E4%B9%A0%E4%B8%8A%E4%BC%A0%E8%AE%B0%E5%BD%95-%E5%A4%A9%E6%B1%A0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8NLP_-_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" class="title">旧代码学习上传记录-天池-零基础入门NLP_-_新闻文本分类.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" class="title">萱仔求职系列——1.1_机器学习基础知识复习.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.2_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0+%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/" class="title">萱仔求职系列——1.2_机器学习基础知识复习+部分代码实战.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%942.1_python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="title">萱仔求职系列——2.1_python基础知识复习——数据类型+数据结构.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/" class="title">萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-萱仔大模型学习记录3.1-BERT算法微调理论和实践" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      萱仔大模型学习记录3.1-BERT算法微调理论和实践.html
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953.1-BERT%E7%AE%97%E6%B3%95%E5%BE%AE%E8%B0%83%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/" class="article-date">
+	  <time datetime="2024-09-04T06:00:00.000Z" itemprop="datePublished">2024-09-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">大模型学习记录</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953.1-BERT%E7%AE%97%E6%B3%95%E5%BE%AE%E8%B0%83%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p> 涉及bert的参数微调，还是得返回去学习原本transform的模块理论，不同的微调可以在不同的模块上进行改进：</p>
+<p> 2.transform原论文——</p>
+<p> Attention Is All You Need</p>
+<p> 论文网址：<br> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762" title="https://arxiv.org/pdf/1706.03762">https://arxiv.org/pdf/1706.03762</a> </p>
+<p> 代码网址：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/e1d5b38eb06a4f768c5ff938460c916e.png"></p>
+<p> Transformer模型是一种用于处理序列数据的神经网络架构，尤其在自然语言处理任务中表现优异。Transformer由多个编码器（Encoder）和解码器（Decoder）堆叠而成。以下是Transformer模型各个模块的作用：</p>
+<h3 id="1-输入嵌入（Input-Embedding）"><a href="#1-输入嵌入（Input-Embedding）" class="headerlink" title="1. 输入嵌入（Input Embedding）"></a>1. 输入嵌入（Input Embedding）</h3><p> 将输入序列中的每个词转换为固定长度的向量表示。这一步通常使用词嵌入（如Word2Vec或GloVe）或直接训练的嵌入矩阵。</p>
+<h3 id="2-位置编码（Positional-Encoding）"><a href="#2-位置编码（Positional-Encoding）" class="headerlink" title="2. 位置编码（Positional Encoding）"></a>2. 位置编码（Positional Encoding）</h3><p> 由于Transformer模型没有循环结构（不像RNN），因此需要显式地注入序列的位置信息。位置编码向量被加到输入嵌入向量上，使得模型能够感知词的相对和绝对位置。位置编码通常使用正弦和余弦函数生成。</p>
+<h3 id="3-多头自注意力机制（Multi-Head-Self-Attention）"><a href="#3-多头自注意力机制（Multi-Head-Self-Attention）" class="headerlink" title="3. 多头自注意力机制（Multi-Head Self-Attention）"></a>3. 多头自注意力机制（Multi-Head Self-Attention）</h3><p> 这是Transformer的核心模块之一，用于捕捉输入序列中不同词之间的依赖关系。通过多头注意力，模型能够并行计算多个不同的注意力表示，从而提高模型的表示能力。每个注意力头计算如下：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/2d92899ee7a84a39adde6f5c78fe2774.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/direct/114914e15ff04e27ba9563a006341084.png"></p>
+<p> 其中，Q,K,VQ, K, VQ,K,V 分别表示查询（Query）、键（Key）和值（Value）矩阵，dkd_kdk​ 是键向量的维度。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/c5d8676382404573b753bb40041f37f2.png"></p>
+<h3 id="4-前馈神经网络（Feed-Forward-Neural-Network）"><a href="#4-前馈神经网络（Feed-Forward-Neural-Network）" class="headerlink" title="4. 前馈神经网络（Feed-Forward Neural Network）"></a>4. 前馈神经网络（Feed-Forward Neural Network）</h3><p> 每个注意力头的输出经过前馈神经网络，通常包括两个线性变换和一个ReLU激活函数：</p>
+<p> 前馈神经网络增加了模型的非线性表达能力。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/8df6229216104a4eb59bb043f15504b5.png"></p>
+<h3 id="5-残差连接和层归一化（Residual-Connection-and-Layer-Normalization）"><a href="#5-残差连接和层归一化（Residual-Connection-and-Layer-Normalization）" class="headerlink" title="5. 残差连接和层归一化（Residual Connection and Layer Normalization）"></a>5. 残差连接和层归一化（Residual Connection and Layer Normalization）</h3><p> 在每个子层（注意力机制和前馈神经网络）之后，都会有残差连接和层归一化。这有助于防止梯度消失和梯度爆炸，提高模型训练的稳定性和收敛速度。</p>
+<h3 id="6-编码器（Encoder）"><a href="#6-编码器（Encoder）" class="headerlink" title="6. 编码器（Encoder）"></a>6. 编码器（Encoder）</h3><p> 编码器由多个相同结构的层堆叠而成，每层包括一个多头自注意力机制和一个前馈神经网络。编码器的输入是带有位置编码的词嵌入，输出是输入序列的编码表示。</p>
+<h3 id="7-解码器（Decoder）"><a href="#7-解码器（Decoder）" class="headerlink" title="7. 解码器（Decoder）"></a>7. 解码器（Decoder）</h3><p> 解码器也由多个相同结构的层堆叠而成，但与编码器不同的是，每层解码器包含三个子层：一个多头自注意力机制、一个编码器-解码器注意力机制和一个前馈神经网络。编码器-解码器注意力机制允许解码器在生成输出序列时关注编码器的输出。</p>
+<h3 id="8-输出层（Output-Layer）"><a href="#8-输出层（Output-Layer）" class="headerlink" title="8. 输出层（Output Layer）"></a>8. 输出层（Output Layer）</h3><p> 解码器的输出通过一个线性层和softmax层，生成目标序列中每个词的概率分布。该概率分布用于选择最终的输出词。</p>
+<h3 id="9-掩码（Masking）"><a href="#9-掩码（Masking）" class="headerlink" title="9. 掩码（Masking）"></a>9. 掩码（Masking）</h3><p> 在自注意力机制中，为了防止模型在训练时看到未来的信息（尤其在解码器中），会使用掩码来屏蔽不相关的位置。掩码确保解码器只能关注已生成的词和当前词的位置。</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p> Transformer模型通过并行处理序列数据，显著提高了计算效率和性能。多头自注意力机制和残差连接是其核心创新，使得Transformer在处理长序列数据和捕捉远距离依赖关系上表现出色。通过堆叠多个编码器和解码器层，Transformer能够学习复杂的语义和句法结构，从而在机器翻译、文本生成和问答系统等任务中取得优异的表现。</p>
+<h2 id="2-调优方法集锦——理论加代码demo"><a href="#2-调优方法集锦——理论加代码demo" class="headerlink" title="2.调优方法集锦——理论加代码demo"></a>2.调优方法集锦——理论加代码demo</h2><p> 我前面完成了一个bert的实践，使用Bert算法在一个新闻文本分类的数据集上，这个数据集是天池官方的学习数据集，其中包含16类文本，且做了脱敏，可以用于实践。</p>
+<p> 然后调优的方法可以分为7种：以下为图片介绍（<br> <strong>此图是我学习的时候偶然截图得到，不知道原版作者是谁，如果侵权请联系我，我马上删掉，谢谢谢谢）</strong> </p>
+<p><img src="https://i-blog.csdnimg.cn/direct/1138690bd4094dafb1da0f457527020a.png"></p>
+<h3 id="1-LORA新增低秩矩阵到原权重矩阵"><a href="#1-LORA新增低秩矩阵到原权重矩阵" class="headerlink" title="1.LORA新增低秩矩阵到原权重矩阵"></a>1.LORA新增低秩矩阵到原权重矩阵</h3><p> LoRA在大规模语言模型扮演着至关重要的角色，LoRA使用在微调一些复杂模型的参数。</p>
+<p> 原版论文：<br> <a href="https://link.zhihu.com/?target=https://arxiv.org/pdf/2106.09685.pdf" title="https://arxiv.org/pdf/2106.09685.pdf">https://arxiv.org/pdf/2106.09685.pdf</a> </p>
+<p> 原版代码：<a target="_blank" rel="noopener" href="https://github.com/microsoft/LoRA">https://github.com/microsoft/LoRA</a></p>
+<h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><p> 传统的神经网络微调方法通常需要调整所有层的权重，以适应新的任务。这种方法虽然有效，但需要大量计算资源和存储空间。研究表明，许多过参数化的模型实际上存在于一个低维空间中，模型在适应新任务时，权重变化的“内在秩”较低。这一发现启发了LoRA的提出。</p>
+<h3 id="LoRA的核心思想"><a href="#LoRA的核心思想" class="headerlink" title="LoRA的核心思想"></a>LoRA的核心思想</h3><p> LoRA的核心思想是通过优化低秩矩阵来间接训练神经网络中的某些密集层，从而在保持预训练权重不变的情况下，实现模型的微调。具体来说，LoRA通过引入两个低秩矩阵A和B来表示权重变化：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/cf962b8a7fed4bc79ae4cad274dd3082.png"></p>
+<p> LoRA是一种通过增加低秩矩阵来微调预训练模型的方法。其核心思想是通过增加较小的矩阵来表示权重更新，从而减少计算复杂度和存储需求。</p>
+<p> 假设预训练模型的权重矩阵是W。LoRA在训练过程中将其表示为两个低秩矩阵的乘积，即：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/5486ba8076c3498d855be2f8e24e9041.png"></p>
+<p> 其中，A和B是较小的低秩矩阵（秩为r），这样可以减少训练过程中需要调整的参数数量。降低计算复杂度，减少存储需求，保留预训练模型的原始能力，这个我个人感觉可以类比到图像算法中的通道注意力机制上，类似看那个通道更重要，就把这个通道更加的计算（个人理解不一定对）</p>
+<p> LoRA在模型微调中具有多个显著优势：</p>
+<ol>
+<li><strong>存储和计算效率</strong><br> ： 使用低秩矩阵A和B来表示权重变化，可以显著减少需要训练的参数数量。例如，在GPT-3 175B模型中，尽管全秩（full rank）为12,288，但使用低秩（r）为1或2的矩阵就足够了。这使得LoRA在存储和计算方面都非常高效。</li>
+<li><strong>模块化和灵活性</strong><br> ： 预训练模型可以被共享，并用于构建多个小的LoRA模块，以适应不同的任务。通过冻结共享模型并替换矩阵A和B，可以高效地切换任务，显著减少存储需求和任务切换开销。</li>
+<li><strong>降低训练成本</strong><br> ： LoRA通过只优化注入的低秩矩阵无需计算大部分参数的梯度或维护优化器状态，使得训练更加高效。使用自适应优化器时，硬件需求可以降低至原来的三分之一。</li>
+<li><strong>无推理延迟</strong><br> ： LoRA的简单线性设计允许在部署时将可训练矩阵与冻结权重合并，从而在推理时不会引入额外的延迟。这使得LoRA在推理阶段与完全微调的模型相比没有性能差异。</li>
+<li><strong>与其他方法的兼容性</strong><br> ： LoRA可以与许多现有的方法（如前缀调优）结合使用，以进一步提高模型的性能和适应性。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import torch</span><br><span class="line">from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments, TrainerCallback</span><br><span class="line">import pandas as pd</span><br><span class="line">from sklearn.metrics import accuracy_score, precision_recall_fscore_support</span><br><span class="line">from torch.utils.data import Dataset</span><br><span class="line">import loralib as lora</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"># 将数据转换为PyTorch的Dataset格式</span><br><span class="line">class XuanDataset(Dataset):</span><br><span class="line">    def __init__(self, texts, labels, tokenizer, max_len):</span><br><span class="line">        self.texts = texts</span><br><span class="line">        self.labels = labels</span><br><span class="line">        self.tokenizer = tokenizer</span><br><span class="line">        self.max_len = max_len</span><br><span class="line"></span><br><span class="line">    def __len__(self):</span><br><span class="line">        return len(self.texts)</span><br><span class="line"></span><br><span class="line">    def __getitem__(self, idx):</span><br><span class="line">        text = self.texts[idx]</span><br><span class="line">        label = self.labels[idx]</span><br><span class="line">        encoding = self.tokenizer(</span><br><span class="line">            text,</span><br><span class="line">            add_special_tokens=True,</span><br><span class="line">            max_length=self.max_len,</span><br><span class="line">            return_token_type_ids=False,</span><br><span class="line">            padding=&#x27;max_length&#x27;,</span><br><span class="line">            truncation=True,</span><br><span class="line">            return_attention_mask=True,</span><br><span class="line">            return_tensors=&#x27;pt&#x27;,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        return &#123;</span><br><span class="line">            &#x27;input_ids&#x27;: encoding[&#x27;input_ids&#x27;].flatten(),</span><br><span class="line">            &#x27;attention_mask&#x27;: encoding[&#x27;attention_mask&#x27;].flatten(),</span><br><span class="line">            &#x27;labels&#x27;: torch.tensor(label, dtype=torch.long)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">df_train = pd.read_csv(&#x27;train.csv&#x27;)  </span><br><span class="line">df_test = pd.read_csv(&#x27;test.csv&#x27;)    </span><br><span class="line">train_texts = df_train[&#x27;text&#x27;].tolist()</span><br><span class="line">train_labels = df_train[&#x27;label&#x27;].tolist()</span><br><span class="line">test_texts = df_test[&#x27;text&#x27;].tolist()</span><br><span class="line">test_labels = df_test[&#x27;label&#x27;].tolist()</span><br><span class="line">tokenizer = BertTokenizer.from_pretrained(&#x27;bert-base-uncased&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">train_dataset = XuanDataset(</span><br><span class="line">    texts=train_texts,</span><br><span class="line">    labels=train_labels,</span><br><span class="line">    tokenizer=tokenizer,</span><br><span class="line">    max_len=128</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">test_dataset = XuanDataset(</span><br><span class="line">    texts=test_texts,</span><br><span class="line">    labels=test_labels,</span><br><span class="line">    tokenizer=tokenizer,</span><br><span class="line">    max_len=128</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">model = BertForSequenceClassification.from_pretrained(&#x27;bert-base-uncased&#x27;, num_labels=16)  # 加载预训练的BERT模型，并设置分类任务的类别数为16</span><br><span class="line">lora.lora(model, r=4)  # 应用LoRA方法，将低秩矩阵的秩设置为4</span><br><span class="line"></span><br><span class="line">class MetricsCallback(TrainerCallback):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.metrics = &#123;&#x27;epoch&#x27;: [], &#x27;loss&#x27;: [], &#x27;accuracy&#x27;: [], &#x27;precision&#x27;: [], &#x27;recall&#x27;: [], &#x27;f1&#x27;: []&#125;</span><br><span class="line"></span><br><span class="line">    def on_epoch_end(self, args, state, control, **kwargs):</span><br><span class="line">        metrics = kwargs[&#x27;metrics&#x27;]</span><br><span class="line">        self.metrics[&#x27;epoch&#x27;].append(state.epoch)</span><br><span class="line">        self.metrics[&#x27;loss&#x27;].append(metrics[&#x27;eval_loss&#x27;])</span><br><span class="line">        self.metrics[&#x27;accuracy&#x27;].append(metrics[&#x27;eval_accuracy&#x27;])</span><br><span class="line">        self.metrics[&#x27;precision&#x27;].append(metrics[&#x27;eval_precision&#x27;])</span><br><span class="line">        self.metrics[&#x27;recall&#x27;].append(metrics[&#x27;eval_recall&#x27;])</span><br><span class="line">        self.metrics[&#x27;f1&#x27;].append(metrics[&#x27;eval_f1&#x27;])</span><br><span class="line">        </span><br><span class="line">        # 保存模型权重</span><br><span class="line">        model.save_pretrained(f&#x27;./model_weights/epoch_&#123;int(state.epoch)&#125;&#x27;)</span><br><span class="line"></span><br><span class="line">def compute_metrics(pred):</span><br><span class="line">    labels = pred.label_ids</span><br><span class="line">    preds = pred.predictions.argmax(-1)</span><br><span class="line">    precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average=&#x27;weighted&#x27;)</span><br><span class="line">    acc = accuracy_score(labels, preds)</span><br><span class="line">    return &#123;</span><br><span class="line">        &#x27;accuracy&#x27;: acc,</span><br><span class="line">        &#x27;precision&#x27;: precision,</span><br><span class="line">        &#x27;recall&#x27;: recall,</span><br><span class="line">        &#x27;f1&#x27;: f1,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">training_args = TrainingArguments(</span><br><span class="line">    output_dir=&#x27;./results_lora&#x27;,  </span><br><span class="line">    evaluation_strategy</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-QLORA量化权重到4bit-LORA"><a href="#2-QLORA量化权重到4bit-LORA" class="headerlink" title="2.QLORA量化权重到4bit+LORA"></a>2.QLORA量化权重到4bit+LORA</h3><p> 原版论文：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/c3cfe3a208e64edba4882ef56b6d190e.png"></p>
+<p> 论文提出了QLoRA，一种高效的微调方法，该方法通过显著降低内存使用，使得在单个48GB GPU上微调包含650亿参数的模型成为可能，同时保持了全16位微调任务性能。QLoRA通过在一个冻结的、4位量化的预训练语言模型中反向传播梯度到低秩适配器（LoRA）来实现。最佳模型系列，命名为Guanaco，在Vicuna基准测试中超越了所有之前公开发布的模型，达到了ChatGPT性能的99.3%，而仅需在单个GPU上微调24小时。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import torch</span><br><span class="line">from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments, TrainerCallback</span><br><span class="line">from torch.utils.data import Dataset, DataLoader, random_split</span><br><span class="line">import pandas as pd</span><br><span class="line">from sklearn.metrics import accuracy_score, precision_recall_fscore_support</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import os</span><br><span class="line">import loralib as lora</span><br><span class="line">from quantization import quantize_model  </span><br><span class="line">class CustomDataset(Dataset):</span><br><span class="line">    def __init__(self, texts, labels, tokenizer, max_len):</span><br><span class="line">        self.texts = texts</span><br><span class="line">        self.labels = labels</span><br><span class="line">        self.tokenizer = tokenizer</span><br><span class="line">        self.max_len = max_len</span><br><span class="line"></span><br><span class="line">    def __len__(self):</span><br><span class="line">        return len(self.texts)</span><br><span class="line"></span><br><span class="line">    def __getitem__(self, idx):</span><br><span class="line">        text = self.texts[idx]</span><br><span class="line">        label = self.labels[idx]</span><br><span class="line">        encoding = self.tokenizer(</span><br><span class="line">            text,</span><br><span class="line">            add_special_tokens=True,</span><br><span class="line">            max_length=self.max_len,</span><br><span class="line">            return_token_type_ids=False,</span><br><span class="line">            padding=&#x27;max_length&#x27;,</span><br><span class="line">            truncation=True,</span><br><span class="line">            return_attention_mask=True,</span><br><span class="line">            return_tensors=&#x27;pt&#x27;,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        return &#123;</span><br><span class="line">            &#x27;input_ids&#x27;: encoding[&#x27;input_ids&#x27;].flatten(),</span><br><span class="line">            &#x27;attention_mask&#x27;: encoding[&#x27;attention_mask&#x27;].flatten(),</span><br><span class="line">            &#x27;labels&#x27;: torch.tensor(label, dtype=torch.long)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(&#x27;train.csv&#x27;)  </span><br><span class="line">texts = df[&#x27;text&#x27;].tolist()</span><br><span class="line">labels = df[&#x27;label&#x27;].tolist()</span><br><span class="line"></span><br><span class="line">tokenizer = BertTokenizer.from_pretrained(&#x27;bert-base-uncased&#x27;)</span><br><span class="line"></span><br><span class="line">dataset = CustomDataset(</span><br><span class="line">    texts=texts,</span><br><span class="line">    labels=labels,</span><br><span class="line">    tokenizer=tokenizer,</span><br><span class="line">    max_len=128</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">train_size = int(0.8 * len(dataset))</span><br><span class="line">val_size = len(dataset) - train_size</span><br><span class="line">train_dataset, val_dataset = random_split(dataset, [train_size, val_size])</span><br><span class="line"></span><br><span class="line">model = BertForSequenceClassification.from_pretrained(&#x27;bert-base-uncased&#x27;, num_labels=16)  # 加载预训练的BERT模型，并设置分类任务的类别数为16</span><br><span class="line"></span><br><span class="line">lora.lora(model, r=4)  # 应用LoRA方法，将低秩矩阵的秩设置为4</span><br><span class="line">quantize_model(model)  # 对模型进行量化处理</span><br><span class="line"></span><br><span class="line">class MetricsCallback(TrainerCallback):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.metrics = &#123;&#x27;epoch&#x27;: [], &#x27;loss&#x27;: [], &#x27;accuracy&#x27;: [], &#x27;precision&#x27;: [], &#x27;recall&#x27;: [], &#x27;f1&#x27;: []&#125;</span><br><span class="line"></span><br><span class="line">    def on_epoch_end(self, args, state, control, **kwargs):</span><br><span class="line">        metrics = kwargs[&#x27;metrics&#x27;]</span><br><span class="line">        self.metrics[&#x27;epoch&#x27;].append(state.epoch)</span><br><span class="line">        self.metrics[&#x27;loss&#x27;].append(metrics[&#x27;eval_loss&#x27;])</span><br><span class="line">        self.metrics[&#x27;accuracy&#x27;].append(metrics[&#x27;eval_accuracy&#x27;])</span><br><span class="line">        self.metrics[&#x27;precision&#x27;].append(metrics[&#x27;eval_precision&#x27;])</span><br><span class="line">        self.metrics[&#x27;recall&#x27;].append(metrics[&#x27;eval_recall&#x27;])</span><br><span class="line">        self.metrics[&#x27;f1&#x27;].append(metrics[&#x27;eval_f1&#x27;])</span><br><span class="line">        </span><br><span class="line">        # 保存模型权重</span><br><span class="line">        model.save_pretrained(f&#x27;./model_weights/epoch_&#123;int(state.epoch)&#125;&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def compute_metrics(pred):</span><br><span class="line">    labels = pred.label_ids</span><br><span class="line">    preds = pred.predictions.argmax(-1)</span><br><span class="line">    precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average=&#x27;weighted&#x27;)</span><br><span class="line">    acc = accuracy_score(labels, preds)</span><br><span class="line">    return &#123;</span><br><span class="line">        &#x27;accuracy&#x27;: acc,</span><br><span class="line">        &#x27;precision&#x27;: precision,</span><br><span class="line">        &#x27;recall&#x27;: recall,</span><br><span class="line">        &#x27;f1&#x27;: f1,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">training_args = TrainingArguments(</span><br><span class="line">    output_dir=&#x27;./results_qlora&#x27;,  </span><br><span class="line">    evaluation_strategy=&#x27;epoch&#x27;,  </span><br><span class="line">    learning_rate=2e-5,  </span><br><span class="line">    per_device_train_batch_size=8,  </span><br><span class="line">    per_device_eval_batch_size=8,  </span><br><span class="line">    num_train_epochs=3,  </span><br><span class="line">    weight_decay=0.01,  </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">metrics_callback = MetricsCallback()</span><br><span class="line">trainer = Trainer(</span><br><span class="line">    model=model,  </span><br><span class="line">    args=training_args,  </span><br><span class="line">    train_dataset=train_dataset,  </span><br><span class="line">    eval_dataset=val_dataset,  </span><br><span class="line">    compute_metrics=compute_metrics, </span><br><span class="line">    callbacks=[metrics_callback] </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">trainer.train()</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(12, 8))#huatu</span><br><span class="line">plt.plot(metrics_callback.metrics[&#x27;epoch&#x27;], metrics_callback.metrics[&#x27;loss&#x27;], label=&#x27;Loss&#x27;)</span><br><span class="line">plt.plot(metrics_callback.metrics[&#x27;epoch&#x27;], metrics_callback.metrics[&#x27;accuracy&#x27;], label=&#x27;Accuracy&#x27;)</span><br><span class="line">plt.plot(metrics_callback.metrics[&#x27;epoch&#x27;], metrics_callback.metrics[&#x27;precision&#x27;], label=&#x27;Precision&#x27;)</span><br><span class="line">plt.plot(metrics_callback.metrics[&#x27;epoch&#x27;], metrics_callback.metrics[&#x27;recall&#x27;], label=&#x27;Recall&#x27;)</span><br><span class="line">plt.plot(metrics_callback.metrics[&#x27;epoch&#x27;], metrics_callback.metrics[&#x27;f1&#x27;], label=&#x27;F1 Score&#x27;)</span><br><span class="line">plt.xlabel(&#x27;Epoch&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Score&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.title(&#x27;Training Metrics Over Epochs&#x27;)</span><br><span class="line">plt.savefig(&#x27;training_metrics.png&#x27;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="剩下的下一章再更新"><a href="#剩下的下一章再更新" class="headerlink" title="-------------------------------------------------------------------------------剩下的下一章再更新"></a>-------------------------------------------------------------------------------剩下的下一章再更新</h3><h3 id="3-Adapter-Tuning"><a href="#3-Adapter-Tuning" class="headerlink" title="3.Adapter Tuning"></a>3.Adapter Tuning</h3><p> 原版论文：<br> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1902.00751.pdf" title="https://arxiv.org/pdf/1902.00751.pdf">https://arxiv.org/pdf/1902.00751.pdf</a> </p>
+<p> 原版代码：<br> <a target="_blank" rel="noopener" href="https://github.com/google-research/adapter-bert" title="GitHub - google-research/adapter-bert">GitHub - google-research&#x2F;adapter-bert</a> </p>
+<p><img src="https://i-blog.csdnimg.cn/direct/9abcb625092842f2bcffd431b091ecc9.png"></p>
+<h3 id="4-Prefix-Tuning输入增加可训练的上下文前缀"><a href="#4-Prefix-Tuning输入增加可训练的上下文前缀" class="headerlink" title="4.Prefix Tuning输入增加可训练的上下文前缀"></a>4.Prefix Tuning输入增加可训练的上下文前缀</h3><h3 id="5-Prompt-Tuning输入增加可训练的嵌入向量提示"><a href="#5-Prompt-Tuning输入增加可训练的嵌入向量提示" class="headerlink" title="5.Prompt Tuning输入增加可训练的嵌入向量提示"></a>5.Prompt Tuning输入增加可训练的嵌入向量提示</h3><h3 id="6-P-Tuning使用可训练的LSTM模型生成嵌入向量到输入"><a href="#6-P-Tuning使用可训练的LSTM模型生成嵌入向量到输入" class="headerlink" title="6.P-Tuning使用可训练的LSTM模型生成嵌入向量到输入"></a>6.P-Tuning使用可训练的LSTM模型生成嵌入向量到输入</h3><h3 id="7-P-Tuning-V2P-Tuning-多个N中输入"><a href="#7-P-Tuning-V2P-Tuning-多个N中输入" class="headerlink" title="7.P-Tuning V2P-Tuning+多个N中输入"></a>7.P-Tuning V2P-Tuning+多个N中输入</h3>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953.1-BERT%E7%AE%97%E6%B3%95%E5%BE%AE%E8%B0%83%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/" title="萱仔大模型学习记录3.1-BERT算法微调理论和实践.html" target="_blank" rel="external">http://example.com/2024/09/04/萱仔大模型学习记录3.1-BERT算法微调理论和实践/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://blog.csdn.net/qq_44117805?" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://blog.csdn.net/qq_44117805?" target="_blank"><span class="text-dark">萱仔</span><small class="ml-1x">萱仔的自我学习记录，冲冲冲！</small></a></h3>
+        <div>个人简介</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.1-BERT%E7%AE%97%E6%B3%95%E8%AE%BA%E6%96%87%E5%92%8C%E5%AE%9E%E8%B7%B5/" title="萱仔大模型学习记录2.1-BERT算法论文和实践.html"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953.2-BERT%E7%AE%97%E6%B3%95%E5%BE%AE%E8%B0%83%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5Adapter_Tuning%E3%80%81Prefix_Tuning%E7%AD%89/" title="萱仔大模型学习记录3.2-BERT算法微调理论和实践Adapter_Tuning、Prefix_Tuning等.html"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

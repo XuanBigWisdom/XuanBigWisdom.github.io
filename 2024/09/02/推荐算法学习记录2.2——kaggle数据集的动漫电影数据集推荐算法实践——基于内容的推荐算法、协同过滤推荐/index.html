@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo 博客中如何插入多种内容 | 萱仔的学习小屋</title>
+  <meta name="description" content="这篇文章展示了如何在 Hexo 博客中插入图片、表格、代码块、正文内容以及三级标题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 博客中如何插入多种内容">
+<meta property="og:url" content="http://example.com/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.2%E2%80%94%E2%80%94kaggle%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%8A%A8%E6%BC%AB%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E3%80%81%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E6%8E%A8%E8%8D%90/index.html">
+<meta property="og:site_name" content="萱仔的学习小屋">
+<meta property="og:description" content="这篇文章展示了如何在 Hexo 博客中插入图片、表格、代码块、正文内容以及三级标题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/e5e80d8115974c3484689284ec4dd95d.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/1ed19e255eeb47f98bf3339d14791304.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/ebc0439f09404805b9ef766baf91ca96.png">
+<meta property="article:published_time" content="2024-09-02T06:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-05T16:54:03.559Z">
+<meta property="article:author" content="xuanzaismart">
+<meta property="article:tag" content="Hexo, 教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/e5e80d8115974c3484689284ec4dd95d.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.2%E2%80%94%E2%80%94kaggle%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%8A%A8%E6%BC%AB%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E3%80%81%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E6%8E%A8%E8%8D%90/index.html">
+  
+    <link rel="alternate" href="[object Object]" title="萱仔的学习小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://blog.csdn.net/qq_44117805?" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">萱仔</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">萱仔的自我学习记录，冲冲冲！</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hebei, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>不问收获，但问耕耘！冲冲冲，萱仔的自我学习记录博客，恭喜自己重新在github搭建个人博客，前面内容逐渐搬运到新博客之后和原CSDN博客同时更新，<br>CSDN网址：<a href="https://blog.csdn.net/qq_44117805?type=blog" target="_blank">https://blog.csdn.net/qq_44117805?type=blog</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">大模型学习记录</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/Python/">Python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-%E6%95%99%E7%A8%8B/" rel="tag">Hexo, 教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" rel="tag">常用库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-nlp/" rel="tag">技术, nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Anaconda/" style="font-size: 13px;">Anaconda</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/Hexo-%E6%95%99%E7%A8%8B/" style="font-size: 13.5px;">Hexo, 教程</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" style="font-size: 13px;">常用库</a> <a href="/tags/%E6%8A%80%E6%9C%AF-nlp/" style="font-size: 13px;">技术, nlp</a> <a href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" style="font-size: 14px;">技术, 教程</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 13px;">教程</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a><span class="archive-list-count">18</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E6%97%A7%E4%BB%A3%E7%A0%81%E5%AD%A6%E4%B9%A0%E4%B8%8A%E4%BC%A0%E8%AE%B0%E5%BD%95-%E5%A4%A9%E6%B1%A0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8NLP_-_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" class="title">旧代码学习上传记录-天池-零基础入门NLP_-_新闻文本分类.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" class="title">萱仔求职系列——1.1_机器学习基础知识复习.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.2_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0+%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/" class="title">萱仔求职系列——1.2_机器学习基础知识复习+部分代码实战.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%942.1_python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="title">萱仔求职系列——2.1_python基础知识复习——数据类型+数据结构.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/" class="title">萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-推荐算法学习记录2.2——kaggle数据集的动漫电影数据集推荐算法实践——基于内容的推荐算法、协同过滤推荐" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo 博客中如何插入多种内容
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.2%E2%80%94%E2%80%94kaggle%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%8A%A8%E6%BC%AB%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E3%80%81%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E6%8E%A8%E8%8D%90/" class="article-date">
+	  <time datetime="2024-09-02T06:00:00.000Z" itemprop="datePublished">2024-09-02</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Hexo-%E6%95%99%E7%A8%8B/" rel="tag">Hexo, 教程</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.2%E2%80%94%E2%80%94kaggle%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%8A%A8%E6%BC%AB%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E3%80%81%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E6%8E%A8%E8%8D%90/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="1、基于内容的推荐"><a href="#1、基于内容的推荐" class="headerlink" title="1、基于内容的推荐"></a><strong>1、基于内容的推荐</strong></h3><p> ：</p>
+<p> 这种方法根据项的相关信息（如描述信息、标签等）和用户对项的操作行为（如评论、收藏、点赞等）来构建推荐算法模型。它可以直接利用物品的内容特征进行推荐，适用于内容较为丰富的场景。‌</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#1. 基于内容的推荐算法</span><br><span class="line"></span><br><span class="line">from sklearn.feature_extraction.text import TfidfVectorizer</span><br><span class="line">from sklearn.metrics.pairwise import linear_kernel</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">anime = pd.read_csv(&#x27;./data/archive_2/anime.csv&#x27;)</span><br><span class="line"></span><br><span class="line"># 使用TF-IDF向量化</span><br><span class="line">tfidf = TfidfVectorizer(stop_words=&#x27;english&#x27;)</span><br><span class="line">tfidf_matrix = tfidf.fit_transform(anime[&#x27;Genres&#x27;].fillna(&#x27;&#x27;))</span><br><span class="line"></span><br><span class="line"># 计算每个动漫之间的余弦相似度</span><br><span class="line">cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)</span><br><span class="line"></span><br><span class="line"># 创建一个动漫名字到索引的映射</span><br><span class="line">indices = pd.Series(anime.index, index=anime[&#x27;Name&#x27;]).drop_duplicates()</span><br><span class="line"></span><br><span class="line"># 推荐函数</span><br><span class="line">def content_based_recommendations(title, cosine_sim=cosine_sim):</span><br><span class="line">    idx = indices[title]</span><br><span class="line">    sim_scores = list(enumerate(cosine_sim[idx]))</span><br><span class="line">    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)</span><br><span class="line">    sim_scores = sim_scores[1:11]</span><br><span class="line">    anime_indices = [i[0] for i in sim_scores]</span><br><span class="line">    return anime[&#x27;Name&#x27;].iloc[anime_indices]</span><br><span class="line"></span><br><span class="line"># 示例：推荐与&quot;Cowboy Bebop&quot;相似的动漫</span><br><span class="line">print(content_based_recommendations(&#x27;Cowboy Bebop&#x27;))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p> 结果如下：</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/e5e80d8115974c3484689284ec4dd95d.png"></p>
+<h3 id="2、协同过滤推荐"><a href="#2、协同过滤推荐" class="headerlink" title="2、协同过滤推荐"></a><strong>2、协同过滤推荐</strong></h3><p> ：</p>
+<p> 这种方法通过分析用户的历史行为和偏好，找出具有相似兴趣的用户群体，然后推荐他们喜欢的物品或内容。协同过滤是一种常见的推荐系统技术，它基于用户的历史行为（例如评分、点击、购买等）来预测用户可能感兴趣的物品。协同过滤主要有两种类型：基于用户的协同过滤和基于物品的协同过滤。</p>
+<p><strong>基于用户的协同过滤推荐通过寻找具有相似兴趣的用户来推荐，</strong> </p>
+<p><strong>基于物品的协同过滤推荐通过寻找具有相似特征的物品来推荐。‌</strong> </p>
+<h4 id="基于用户的协同过滤"><a href="#基于用户的协同过滤" class="headerlink" title="基于用户的协同过滤"></a>基于用户的协同过滤</h4><ol>
+<li><p><strong>计算用户相似度</strong><br> ：</p>
+<ul>
+<li>找出与目标用户相似的用户。</li>
+<li>常用的相似度度量方法包括余弦相似度、皮尔逊相关系数等。</li>
+<li>余弦相似度公式：<br>  <img src="https://i-blog.csdnimg.cn/direct/1ed19e255eeb47f98bf3339d14791304.png"></li>
+<li>其中 u 和 v 是两个用户的评分向量。</li>
+</ul>
+</li>
+<li><p>推荐物品：</p>
+<ul>
+<li>找出相似用户喜欢但目标用户未评分的物品。</li>
+<li>根据相似用户的评分来预测目标用户对这些物品的评分。</li>
+<li>推荐评分最高的物品给目标用户.</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">from sklearn.metrics.pairwise import cosine_similarity</span><br><span class="line">from scipy.sparse import csr_matrix</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">batch_size = 10000  # 由于内存不够，一次处理10000条信息</span><br><span class="line">num_recommendations = 10  # 推荐10个电影</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def process_batch(batch_df, user_item_matrix):</span><br><span class="line">    # 将当前批的数据合并到全局用户-项目矩阵</span><br><span class="line">    batch_pivot = batch_df.pivot(index=&#x27;user_id&#x27;, columns=&#x27;anime_id&#x27;, values=&#x27;rating&#x27;).fillna(0)</span><br><span class="line">    # 合并到全局矩阵</span><br><span class="line">    user_item_matrix = user_item_matrix.add(batch_pivot, fill_value=0)</span><br><span class="line">    return user_item_matrix</span><br><span class="line"></span><br><span class="line"># 计算用户之间的相似度</span><br><span class="line">def calculate_similarity(user_item_matrix):</span><br><span class="line">    # 转换为稀疏矩阵</span><br><span class="line">    sparse_user_item_matrix = csr_matrix(user_item_matrix)</span><br><span class="line">    # 计算相似度</span><br><span class="line">    user_similarity = cosine_similarity(sparse_user_item_matrix)</span><br><span class="line">    user_similarity_df = pd.DataFrame(user_similarity, index=user_item_matrix.index, columns=user_item_matrix.index)</span><br><span class="line">    return user_similarity_df</span><br><span class="line"></span><br><span class="line"># 生成推荐</span><br><span class="line">def user_based_recommendations(user_id, user_item_matrix, user_similarity_df, anime_df, num_recommendations=10):</span><br><span class="line">    if user_id not in user_item_matrix.index:</span><br><span class="line">        raise ValueError(f&quot;用户ID &#123;user_id&#125; 不在数据中&quot;)</span><br><span class="line">    </span><br><span class="line">    # 获取相似用户</span><br><span class="line">    similar_users = user_similarity_df[user_id].sort_values(ascending=False).index[1:]</span><br><span class="line"> </span><br><span class="line">    if len(similar_users) == 0:</span><br><span class="line">        return []</span><br><span class="line"></span><br><span class="line">    # 获取相似用户的评分数据</span><br><span class="line">    similar_users_ratings = user_item_matrix.loc[similar_users]</span><br><span class="line"></span><br><span class="line">    # 计算推荐得分</span><br><span class="line">    scores = similar_users_ratings.mean(axis=0).sort_values(ascending=False)</span><br><span class="line"></span><br><span class="line">    # 获取当前用户已经评分的动漫</span><br><span class="line">    user_watched_animes = user_item_matrix.loc[user_id]</span><br><span class="line">    user_watched_animes = user_watched_animes[user_watched_animes &gt; 0].index</span><br><span class="line"></span><br><span class="line">    # 排除当前用户已经看过的动漫</span><br><span class="line">    recommendations = scores.drop(user_watched_animes, errors=&#x27;ignore&#x27;)</span><br><span class="line">    </span><br><span class="line">    # 获取前num_recommendations个推荐</span><br><span class="line">    top_recommendations = recommendations.head(num_recommendations).index</span><br><span class="line"></span><br><span class="line">    # 确保推荐的动漫在anime数据集中</span><br><span class="line">    top_recommendations = top_recommendations[top_recommendations.isin(anime_df[&#x27;MAL_ID&#x27;])]</span><br><span class="line"></span><br><span class="line">    # 获取推荐的动漫名称</span><br><span class="line">    recommended_animes = anime_df[anime_df[&#x27;MAL_ID&#x27;].isin(top_recommendations)][&#x27;Name&#x27;].values</span><br><span class="line"></span><br><span class="line">    return recommended_animes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    </span><br><span class="line">    anime_df = pd.read_csv(&#x27;./data/archive_2/anime.csv&#x27;)</span><br><span class="line">    user_item_matrix = pd.DataFrame()</span><br><span class="line">    for chunk in pd.read_csv(&#x27;./data/archive_2/rating_complete.csv&#x27;, chunksize=batch_size):</span><br><span class="line">        user_item_matrix = process_batch(chunk, user_item_matrix)</span><br><span class="line">    </span><br><span class="line">    # 计算用户之间的相似度</span><br><span class="line">    user_similarity_df = calculate_similarity(user_item_matrix)</span><br><span class="line"></span><br><span class="line">    # 为用户0推荐动漫</span><br><span class="line">    recommended_animes = user_based_recommendations(0, user_item_matrix, user_similarity_df, anime_df, num_recommendations)</span><br><span class="line">    print(&quot;推荐动漫：&quot;, recommended_animes)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="基于物品的协同过滤"><a href="#基于物品的协同过滤" class="headerlink" title="基于物品的协同过滤"></a><strong>基于物品的协同过滤</strong></h4><ol>
+<li><p><strong>计算物品相似度</strong><br> ：</p>
+<ul>
+<li>找出与目标物品相似的物品。</li>
+<li>常用的相似度度量方法同样包括余弦相似度、皮尔逊相关系数等。</li>
+<li>余弦相似度公式：<br>  <img src="https://i-blog.csdnimg.cn/direct/ebc0439f09404805b9ef766baf91ca96.png"></li>
+<li>其中 i 和 j 是两个物品的评分向量。</li>
+</ul>
+</li>
+<li><p><strong>推荐物品</strong><br> ：</p>
+<ul>
+<li>根据用户对相似物品的评分来预测用户对目标物品的评分。</li>
+<li>推荐评分最高的物品给用户。</li>
+</ul>
+</li>
+</ol>
+<h4 id="协同过滤算法的优缺点"><a href="#协同过滤算法的优缺点" class="headerlink" title="协同过滤算法的优缺点"></a>协同过滤算法的优缺点</h4><h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ol>
+<li><strong>无需领域知识</strong><br> ：协同过滤仅依赖于用户的历史行为数据，不需要对物品本身有深入的了解。</li>
+<li><strong>个性化推荐</strong><br> ：能够根据用户的兴趣和行为进行个性化推荐，效果较好。</li>
+<li><strong>简单直观</strong><br> ：算法相对简单，易于实现和解释。</li>
+</ol>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li><strong>数据稀疏性</strong><br> ：在实际应用中，用户对大多数物品没有评分，这会导致评分矩阵非常稀疏，影响推荐效果。</li>
+<li><strong>冷启动问题</strong><br> ：对于新用户或新物品，由于缺乏历史数据，协同过滤很难做出准确的推荐。</li>
+<li><strong>扩展性差</strong><br> ：当用户和物品数量增加时，计算相似度的开销会显著增加，影响系统性能。</li>
+</ol>
+<h3 id="冷启动问题"><a href="#冷启动问题" class="headerlink" title="冷启动问题"></a>冷启动问题</h3><p> 冷启动问题是指在推荐系统中，无法为新用户或新物品提供高质量的推荐。这是协同过滤算法面临的主要挑战之一。解决冷启动问题的方法包括：</p>
+<ol>
+<li><p><strong>新用户冷启动</strong><br> ：</p>
+<ul>
+<li><strong>问卷调查</strong><br>  ：在用户注册时，通过问卷调查获取用户的兴趣偏好。</li>
+<li><strong>使用社交网络数据</strong><br>  ：利用用户的社交网络数据，推测用户的兴趣。</li>
+<li><strong>混合推荐</strong><br>  ：结合内容过滤或基于知识的推荐方法，使用用户的属性和特征进行推荐。</li>
+</ul>
+</li>
+<li><p><strong>新物品冷启动</strong><br> ：</p>
+<ul>
+<li><strong>内容过滤</strong><br>  ：利用物品的内容信息（如标签、描述等）进行推荐。</li>
+<li><strong>使用上下文数据</strong><br>  ：利用物品的上下文数据，如发布日期、类型等，进行推荐。</li>
+<li><strong>混合推荐</strong><br>  ：结合协同过滤与内容过滤，通过物品的内容特征和已有的少量用户反馈进行推荐。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.2%E2%80%94%E2%80%94kaggle%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%8A%A8%E6%BC%AB%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E3%80%81%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E6%8E%A8%E8%8D%90/" title="Hexo 博客中如何插入多种内容" target="_blank" rel="external">http://example.com/2024/09/02/推荐算法学习记录2.2——kaggle数据集的动漫电影数据集推荐算法实践——基于内容的推荐算法、协同过滤推荐/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://blog.csdn.net/qq_44117805?" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://blog.csdn.net/qq_44117805?" target="_blank"><span class="text-dark">萱仔</span><small class="ml-1x">萱仔的自我学习记录，冲冲冲！</small></a></h3>
+        <div>个人简介</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/09/02/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.1%E2%80%94%E2%80%94kaggle%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%8A%A8%E6%BC%AB%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D/" title="Hexo 博客中如何插入多种内容"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2024/09/01/hello-world/" title="Hello World"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

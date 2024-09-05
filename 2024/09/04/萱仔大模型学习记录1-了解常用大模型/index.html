@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>萱仔大模型学习记录1-了解常用大模型.html | 萱仔的学习小屋</title>
+  <meta name="description" content="进行大模型的学习记录，包括了大模型原理，nlp常用的bert算法和transform学习，一些项目的代码和langchain等框架的入门学习过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="萱仔大模型学习记录1-了解常用大模型.html">
+<meta property="og:url" content="http://example.com/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951-%E4%BA%86%E8%A7%A3%E5%B8%B8%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="萱仔的学习小屋">
+<meta property="og:description" content="进行大模型的学习记录，包括了大模型原理，nlp常用的bert算法和transform学习，一些项目的代码和langchain等框架的入门学习过程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/94b57a321b2a48a790cd3f88c63866bd.png">
+<meta property="article:published_time" content="2024-09-04T06:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-05T16:58:12.447Z">
+<meta property="article:author" content="xuanzaismart">
+<meta property="article:tag" content="技术, 教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/94b57a321b2a48a790cd3f88c63866bd.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951-%E4%BA%86%E8%A7%A3%E5%B8%B8%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.html">
+  
+    <link rel="alternate" href="[object Object]" title="萱仔的学习小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://blog.csdn.net/qq_44117805?" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">萱仔</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">萱仔的自我学习记录，冲冲冲！</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hebei, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>不问收获，但问耕耘！冲冲冲，萱仔的自我学习记录博客，恭喜自己重新在github搭建个人博客，前面内容逐渐搬运到新博客之后和原CSDN博客同时更新，<br>CSDN网址：<a href="https://blog.csdn.net/qq_44117805?type=blog" target="_blank">https://blog.csdn.net/qq_44117805?type=blog</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">大模型学习记录</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/Python/">Python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-%E6%95%99%E7%A8%8B/" rel="tag">Hexo, 教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" rel="tag">常用库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-nlp/" rel="tag">技术, nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Anaconda/" style="font-size: 13px;">Anaconda</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/Hexo-%E6%95%99%E7%A8%8B/" style="font-size: 13.5px;">Hexo, 教程</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%BA%93/" style="font-size: 13px;">常用库</a> <a href="/tags/%E6%8A%80%E6%9C%AF-nlp/" style="font-size: 13px;">技术, nlp</a> <a href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" style="font-size: 14px;">技术, 教程</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 13px;">教程</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a><span class="archive-list-count">18</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/">新闻文本分类项目</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E6%97%A7%E4%BB%A3%E7%A0%81%E5%AD%A6%E4%B9%A0%E4%B8%8A%E4%BC%A0%E8%AE%B0%E5%BD%95-%E5%A4%A9%E6%B1%A0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8NLP_-_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" class="title">旧代码学习上传记录-天池-零基础入门NLP_-_新闻文本分类.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.1_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" class="title">萱仔求职系列——1.1_机器学习基础知识复习.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%941.2_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0+%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/" class="title">萱仔求职系列——1.2_机器学习基础知识复习+部分代码实战.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%942.1_python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="title">萱仔求职系列——2.1_python基础知识复习——数据类型+数据结构.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97/">萱仔求职系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/09/05/%E8%90%B1%E4%BB%94%E6%B1%82%E8%81%8C%E7%B3%BB%E5%88%97%E2%80%94%E2%80%943.1_%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95150%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84&%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%AC%E4%B8%80%E5%BC%B9/" class="title">萱仔求职系列——3.1_力扣面试150题目——数组&amp;字符串第一弹.html</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-09-05T06:00:00.000Z" itemprop="datePublished">2024-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-萱仔大模型学习记录1-了解常用大模型" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      萱仔大模型学习记录1-了解常用大模型.html
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951-%E4%BA%86%E8%A7%A3%E5%B8%B8%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="article-date">
+	  <time datetime="2024-09-04T06:00:00.000Z" itemprop="datePublished">2024-09-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">大模型学习记录</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%8A%80%E6%9C%AF-%E6%95%99%E7%A8%8B/" rel="tag">技术, 教程</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951-%E4%BA%86%E8%A7%A3%E5%B8%B8%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p> 由于前段时间拿到了一个某个nlp大模型offer，最近正在入职之前猛猛学习大模型的相关知识，避免入职之后露怯，学习了一下相关知识。我个人准备恶补的路线如下，</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/94b57a321b2a48a790cd3f88c63866bd.png"></p>
+<p> 由于我本人已经掌握了pytorch和TensorFlow库，不做赘述，如果还有uu们想要学习一下pytorch，我我真的强烈推荐某粉色交友软件一个叫小甲鱼的阿婆主的视频，超级适合入门选手（真的无广，很适合学习使用）</p>
+<p> 以下则开始第一部分的总结，大模型的基础知识，相关方法，评价指标总结</p>
+<p> -------------------------------------------------------------------------------------------------------------</p>
+<h2 id="大语言模型基础知识和方法"><a href="#大语言模型基础知识和方法" class="headerlink" title="大语言模型基础知识和方法"></a>大语言模型基础知识和方法</h2><h3 id="1-大语言模型简介"><a href="#1-大语言模型简介" class="headerlink" title="1. 大语言模型简介"></a>1. 大语言模型简介</h3><p> 大语言模型（LLM）常常具有数十亿到数千亿个参数，能够做nlp任务。常用的大语言模型包括 GPT、BERT 和 T5和 LLaMA 等。</p>
+<h4 id="1-OpenAI-的-GPT-系列"><a href="#1-OpenAI-的-GPT-系列" class="headerlink" title="1. OpenAI 的 GPT 系列"></a>1. OpenAI 的 GPT 系列</h4><p> gpt是一种自回归语言模型，即通过预测给定上下文的下一个词来进行训练。gpt常常用于文本生成、对话系统、文本补全等。GPT是基于一种叫做Transformer的模型架构。这个架构由Vaswani等人在2017年提出，核心在于它的“注意力机制”，使得模型能够更好地理解和处理一段文字或句子。传统的模型在处理长文本时会遇到很多麻烦，但Transformer能够解决这些问题，并且计算速度更快。它首先在大量的文本数据上进行训练，不需要特定任务的标签。在这个阶段，GPT学会了理解文本中的语法、语义和上下文。这就像是让模型读了很多书，掌握了丰富的语言知识和使用模式。在预训练期间，它被训练为根据给定的上下文预测下一个词。这种自回归的训练方式使得模型能够理解并学到长期依赖关系，类似于写作时根据前面的句子继续写后面的内容。GPT模型通常由多个Transformer层堆叠而成。每一层包含多头自注意力机制和前馈神经网络。这些层次结构使得模型能够对输入进行更深层次的理解，从而更好地捕捉文本中的复杂语义和结构。为了让模型知道每个词在句子中的位置，GPT引入了位置嵌入。它帮助模型区分不同位置的词，从而正确理解句子的顺序。在预训练完成后，可以对GPT模型进行微调，以适应特定的任务，比如文本生成、问答、语言翻译等。微调时，使用有标签的数据来进一步调整模型的参数，让它在特定任务上表现更好。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import openai  # 导入 OpenAI 库</span><br><span class="line"></span><br><span class="line"># 设置 API 密钥</span><br><span class="line">openai.api_key = &#x27;&#x27;  # 这个密钥可以在官网获得，具体获得可以看我下面推荐的那个网址（无广</span><br><span class="line"></span><br><span class="line"># 使用 GPT-3 生成文本</span><br><span class="line">response = openai.Completion.create(</span><br><span class="line">    engine=&quot;text-davinci-003&quot;,  </span><br><span class="line">    prompt=&quot;你好&quot;,  </span><br><span class="line">    max_tokens=100  # 生成的最大词数</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 输出生成的文本</span><br><span class="line">print(response.choices[0].text.strip()) </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p> 此处插播一个推荐获得openai api的方法（不是广告不是广告不是广告）：</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv29777625/" title="如何获取 OpenAI API 密钥：分步指南 - 哔哩哔哩">如何获取 OpenAI API 密钥：分步指南 - 哔哩哔哩</a> </p>
+<h4 id="2-Google-的-BERT"><a href="#2-Google-的-BERT" class="headerlink" title="2. Google 的 BERT"></a>2. Google 的 BERT</h4><p><strong>BERT</strong><br> 是一种双向编码器表示模型，通过掩码语言建模（Masked Language Modeling, MLM）和下一句预测（Next Sentence Prediction, NSP）进行预训练。我们常常在文本分类、问答系统、命名实体识别等任务种用到BERT（后续补充BERT论文内容在下一章）。</p>
+<h4 id="4-Meta-的-LLaMA"><a href="#4-Meta-的-LLaMA" class="headerlink" title="4. Meta 的 LLaMA"></a>4. Meta 的 LLaMA</h4><h4 id="LLaMA"><a href="#LLaMA" class="headerlink" title="LLaMA"></a><strong>LLaMA</strong></h4><p> 是 Meta 开发的大规模语言模型，常用于文本生成、对话系统、文本补全等。</p>
+<h3 id="2-大语言模型的训练方法"><a href="#2-大语言模型的训练方法" class="headerlink" title="2. 大语言模型的训练方法"></a>2. 大语言模型的训练方法</h3><p> 大语言模型的训练分为两个主要阶段：预训练和微调。</p>
+<p><strong>1）大模型的预训练</strong><br> ：一些大公司使用较强的设备在大量无监督文本数据上进行训练，以捕捉语言的广泛模式和结构，使得产生的模型学习了语言的基本规律。</p>
+<p><strong>2）大模型微调</strong><br> ：在自己需要的任务的数据集上进行后期的训练训练，以提高模型在该任务上的性能。例如自己的任务：情感分析、文本分类、问答等。</p>
+<h3 id="3-预训练方法"><a href="#3-预训练方法" class="headerlink" title="3. 预训练方法"></a>3. 预训练方法</h3><p> 常见的预训练方法包括自回归模型 GPT和自编码模型 BERT。</p>
+<p><strong>1）自回归模型</strong><br> ：在训练过程中，模型通过预测给定上下文的下一个词来学习。</p>
+<p><strong>2）自编码模型</strong><br> ：通过掩盖输入序列中的某些部分并要求模型预测这些掩码位置的词来进行训练。</p>
+<h3 id="4-微调方法"><a href="#4-微调方法" class="headerlink" title="4. 微调方法"></a>4. 微调方法</h3><p> 微调方法通过在预训练模型的基础上，使用较小的数据集进行进一步训练，优化模型在特定任务上的表现。</p>
+<ul>
+<li><strong>任务特定微调</strong><br> ：例如文本分类、命名实体识别、问答等。</li>
+<li><strong>提示词调优（Prompt Tuning）</strong><br> ：我们可以在输入数据前后添加提示，让想利用的模型更好地理解自己的任务。</li>
+<li><strong>参数高效微调（如 LoRA）</strong><br> ：通过减少参数调整的数量，提高微调效率。</li>
+<li><strong>混合优化（Hybrid Optimization）</strong><br> ：结合多种优化策略提升模型性能。</li>
+<li><strong>对抗训练（Adversarial Training）</strong><br> ：通过加入对抗样本，提高模型鲁棒性。</li>
+</ul>
+<h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><p> 评价语言模型性能的指标有多种，常见的包括精确率（Precision）、召回率（Recall）、F1 分数（F1 Score）、困惑度（Perplexity）、BLEU 分数等。</p>
+<h4 id="1-精确率（Precision）"><a href="#1-精确率（Precision）" class="headerlink" title="1. 精确率（Precision）"></a>1. 精确率（Precision）</h4><p> 精确率是模型预测为正类的样本中，实际为正类的比例。</p>
+<h4 id="2-召回率（Recall）"><a href="#2-召回率（Recall）" class="headerlink" title="2. 召回率（Recall）"></a>2. 召回率（Recall）</h4><p> 召回率是实际为正类的样本中，模型预测为正类的比例。</p>
+<h4 id="3-F1-分数（F1-Score）"><a href="#3-F1-分数（F1-Score）" class="headerlink" title="3. F1 分数（F1 Score）"></a>3. F1 分数（F1 Score）</h4><p> F1 分数是精确率和召回率的调和平均数，用于综合评价模型性能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import numpy as np  # 导入 numpy 库</span><br><span class="line">from sklearn.metrics import precision_score, recall_score, f1_score  # 从 sklearn.metrics 导入评价指标</span><br><span class="line"></span><br><span class="line"># 假设是我们已经预测完了，这个是预测完了之后的标签，和真实标签，我们使用sklearn库的函数来计算各种评价指标。</span><br><span class="line">true_labels = np.array([1, 0, 1, 1, 0, 1, 0, 0, 1, 0])  # 定义实际标签</span><br><span class="line">predicted_labels = np.array([1, 0, 1, 0, 0, 1, 1, 0, 1, 0])  # 定义模型预测标签</span><br><span class="line"></span><br><span class="line"># 精确率</span><br><span class="line">precision = precision_score(true_labels, predicted_labels) </span><br><span class="line">print(f&quot;Precision: &#123;precision&#125;&quot;)  </span><br><span class="line"></span><br><span class="line"># 召回率</span><br><span class="line">recall = recall_score(true_labels, predicted_labels) </span><br><span class="line">print(f&quot;Recall: &#123;recall&#125;&quot;)  </span><br><span class="line"></span><br><span class="line"># F1 分数</span><br><span class="line">f1 = f1_score(true_labels, predicted_labels) </span><br><span class="line">print(f&quot;F1 Score: &#123;f1&#125;&quot;)  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-困惑度（Perplexity）"><a href="#4-困惑度（Perplexity）" class="headerlink" title="4. 困惑度（Perplexity）"></a>4. 困惑度（Perplexity）</h4><p> 困惑度表示模型对给定数据集的预测能力。困惑度越低，模型性能越好。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import torch</span><br><span class="line">import torch.nn.functional as F</span><br><span class="line"></span><br><span class="line"># 假设有一个模型的输出标签和真实标签</span><br><span class="line">logits = torch.tensor([[0.2, 0.4, 0.1, 0.3], [0.1, 0.5, 0.2, 0.2]])</span><br><span class="line">labels = torch.tensor([1, 2])</span><br><span class="line"></span><br><span class="line"># 交叉熵损失</span><br><span class="line">loss = F.cross_entropy(logits, labels)</span><br><span class="line"></span><br><span class="line"># 困惑度是交叉熵损失计算而来的</span><br><span class="line">perplexity = torch.exp(loss).item()</span><br><span class="line"></span><br><span class="line">print(f&#x27;Cross Entropy Loss: &#123;loss.item()&#125;&#x27;)</span><br><span class="line">print(f&#x27;Perplexity: &#123;perplexity&#125;&#x27;)</span><br><span class="line">print(f&quot;Perplexity: &#123;perplexity.item()&#125;&quot;)  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-BLEU-分数（BLEU-Score）"><a href="#5-BLEU-分数（BLEU-Score）" class="headerlink" title="5. BLEU 分数（BLEU Score）"></a>5. BLEU 分数（BLEU Score）</h4><p> BLEU 分数用于评价生成文本与参考文本的相似度。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from nltk.translate.bleu_score import sentence_bleu</span><br><span class="line"></span><br><span class="line">reference = [[&#x27;this&#x27;, &#x27;is&#x27;, &#x27;a&#x27;, &#x27;test&#x27;], [&#x27;this&#x27;, &#x27;is&#x27; &#x27;test&#x27;]]</span><br><span class="line">candidate = [&#x27;this&#x27;, &#x27;is&#x27;, &#x27;a&#x27;, &#x27;test&#x27;]</span><br><span class="line">score = sentence_bleu(reference, candidate)</span><br><span class="line"></span><br><span class="line">print(f&#x27;BLEU score: &#123;score&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951-%E4%BA%86%E8%A7%A3%E5%B8%B8%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B/" title="萱仔大模型学习记录1-了解常用大模型.html" target="_blank" rel="external">http://example.com/2024/09/04/萱仔大模型学习记录1-了解常用大模型/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://blog.csdn.net/qq_44117805?" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://blog.csdn.net/qq_44117805?" target="_blank"><span class="text-dark">萱仔</span><small class="ml-1x">萱仔的自我学习记录，冲冲冲！</small></a></h3>
+        <div>个人简介</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/09/04/%E6%97%A7%E9%A1%B9%E7%9B%AE%E6%96%B0%E5%AD%A6%E4%B9%A0-%E5%A4%A9%E6%B1%A0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8NLP_-_%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB_-_BERT%E7%AE%97%E6%B3%95%E5%A4%84%E7%90%86/" title="旧项目新学习-天池-零基础入门NLP_-_新闻文本分类_-_BERT算法处理.html"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952.1-BERT%E7%AE%97%E6%B3%95%E8%AE%BA%E6%96%87%E5%92%8C%E5%AE%9E%E8%B7%B5/" title="萱仔大模型学习记录2.1-BERT算法论文和实践.html"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://blog.csdn.net/qq_44117805?" target="_blank" title="CSDN" data-toggle=tooltip data-placement=top><i class="icon icon-CSDN"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
