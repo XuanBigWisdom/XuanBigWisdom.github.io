@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/about/index.html</loc>
+    
+    <lastmod>2024-09-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/2024/09/04/%E8%90%B1%E4%BB%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953.1-BERT%E7%AE%97%E6%B3%95%E5%BE%AE%E8%B0%83%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/</loc>
     
     <lastmod>2024-09-09</lastmod>
@@ -182,15 +191,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
-    
-    <lastmod>2024-09-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/categories/index.html</loc>
     
     <lastmod>2024-09-02</lastmod>
@@ -236,6 +236,20 @@
 
   
   <url>
+    <loc>http://example.com/tags/Hexo/</loc>
+    <lastmod>2024-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2024-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/Anaconda/</loc>
     <lastmod>2024-09-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -257,20 +271,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/Hexo/</loc>
-    <lastmod>2024-09-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2024-09-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95-%E7%90%86%E8%AE%BA-python/</loc>
     <lastmod>2024-09-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -285,14 +285,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%8A%80%E6%9C%AF-nlp-bert-%E7%90%86%E8%AE%BA-%E5%A4%A7%E6%A8%A1%E5%9E%8B/</loc>
+    <loc>http://example.com/tags/%E6%8A%80%E6%9C%AF-nlp-python-bert-transform/</loc>
     <lastmod>2024-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%8A%80%E6%9C%AF-nlp-python-bert-transform/</loc>
+    <loc>http://example.com/tags/%E6%8A%80%E6%9C%AF-nlp-bert-%E7%90%86%E8%AE%BA-%E5%A4%A7%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2024-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -308,13 +308,6 @@
 
   
   <url>
-    <loc>http://example.com/categories/%E7%8E%AF%E5%A2%83/</loc>
-    <lastmod>2024-09-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2024-09-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -322,7 +315,21 @@
   </url>
   
   <url>
+    <loc>http://example.com/categories/%E7%8E%AF%E5%A2%83/</loc>
+    <lastmod>2024-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/categories/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2024-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/</loc>
     <lastmod>2024-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -337,13 +344,6 @@
   
   <url>
     <loc>http://example.com/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2024-09-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/categories/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/</loc>
     <lastmod>2024-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
